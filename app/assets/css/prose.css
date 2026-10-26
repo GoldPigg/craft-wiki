@@ -1,0 +1,656 @@
+.prose .anchor {
+    margin-left: 0.5em;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6):hover .anchor {
+    opacity: 1;
+}
+
+.prose .anchor:hover {
+    color: var(--color-primary);
+}
+
+/* ============================================================
+ * .prose —— Markdown 渲染内容样式
+ * 依赖 tokens：--color-*、--text-*、--leading-*、--space-*、
+ *              --radius-*、--font-*、--prose-max-width
+ * 不写 [data-theme] 选择器，颜色全部走语义变量，自动适配暗色。
+ * ============================================================ */
+
+.prose {
+  /* 基础排版 */
+  width: var(--prose-max-width);
+  margin-inline: auto;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
+
+/* 段落与块级元素之间的垂直节奏 */
+.prose > * + * {
+  margin-top: 1em;
+}
+
+/* ------------------------------------------------------------
+ * 标题
+ * 标题用宋体（衬线），正文用楷体，形成“刻印 vs 书写”的对比。
+ * scroll-margin-top 避开 sticky header。
+ * ------------------------------------------------------------ */
+.prose :where(h1, h2, h3, h4, h5, h6) {
+  position: relative;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+  scroll-margin-top: calc(var(--header-height) + var(--space4));
+}
+
+.prose h1 {
+  font-size: var(--text3xl);
+  margin-top: 0;
+  margin-bottom: var(--space6);
+  padding-bottom: var(--space3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prose h2 {
+  font-size: var(--text2xl);
+  margin-top: var(--space12);
+  margin-bottom: var(--space4);
+  padding-bottom: var(--space2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prose h3 {
+  font-size: var(--text-xl);
+  margin-top: var(--space8);
+  margin-bottom: var(--space3);
+}
+
+.prose h4 {
+  font-size: var(--text-lg);
+  margin-top: var(--space6);
+  margin-bottom: var(--space2);
+}
+
+.prose h5,
+.prose h6 {
+  font-size: var(--text-base);
+  margin-top: var(--space6);
+  margin-bottom: var(--space2);
+  color: var(--color-text-secondary);
+}
+
+.prose h5 {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 标题后的第一个元素不要额外顶开 */
+.prose :where(h1, h2, h3, h4, h5, h6) + * {
+  margin-top: 0;
+}
+
+/* ------------------------------------------------------------
+ * 锚点 #
+ * 默认隐藏，hover 标题时浮现；触摸设备常驻半透明。
+ * ------------------------------------------------------------ */
+.prose .heading-anchor {
+  position: absolute;
+  left: -1.25em;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-size: 0.75em;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6):hover .heading-anchor,
+.prose .heading-anchor:focus-visible {
+  opacity: 1;
+}
+
+.prose .heading-anchor:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+@media (hover: none) {
+  .prose .heading-anchor {
+    opacity: 0.4;
+  }
+}
+
+/* ------------------------------------------------------------
+ * 文本元素
+ * ------------------------------------------------------------ */
+.prose p {
+  margin-block: 1em;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose del {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.prose mark {
+  background: var(--color-primary-bg);
+  color: var(--color-text-primary);
+  padding: 0.1em 0.25em;
+  border-radius: var(--radius-sm);
+}
+
+.prose small {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.prose sup,
+.prose sub {
+  font-size: 0.75em;
+  line-height: 0;
+}
+
+/* 链接：主色 + 下划线偏移，hover 加深 */
+.prose a {
+  color: var(--color-primary);
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+  transition: color var(--transition-fast);
+}
+
+.prose a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.prose a:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ------------------------------------------------------------
+ * 列表
+ * ------------------------------------------------------------ */
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+  margin-block: 1em;
+}
+
+.prose li + li {
+  margin-top: 0.35em;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin-top: 0.35em;
+}
+
+.prose ul {
+  list-style: disc;
+}
+
+.prose ul ul {
+  list-style: circle;
+}
+
+.prose ul ul ul {
+  list-style: square;
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose ol ol {
+  list-style: lower-alpha;
+}
+
+.prose ol ol ol {
+  list-style: lower-roman;
+}
+
+.prose li > p {
+  margin-block: 0.25em;
+}
+
+/* 任务列表（GFM） */
+.prose ul.contains-task-list {
+  list-style: none;
+  padding-left: 0.5em;
+}
+
+.prose li.task-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+
+.prose li.task-list-item input[type='checkbox'] {
+  margin-top: 0.35em;
+  width: 1em;
+  height: 1em;
+  accent-color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.prose li.task-list-item > label {
+  flex: 1;
+}
+
+.prose li.task-list-item.completed > label {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+/* ------------------------------------------------------------
+ * 引用
+ * ------------------------------------------------------------ */
+.prose blockquote {
+  margin: 1.5em 0;
+  padding: 0.25em 0 0.25em 1.25em;
+  border-left: 3px solid var(--color-primary);
+  color: var(--color-text-secondary);
+  font-style: normal;
+}
+
+.prose blockquote > * + * {
+  margin-top: 0.75em;
+}
+
+.prose blockquote p:first-child {
+  margin-top: 0;
+}
+
+.prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.prose blockquote blockquote {
+  margin-top: 1em;
+  border-left-color: var(--color-border-strong);
+}
+
+/* ------------------------------------------------------------
+ * 代码
+ * ------------------------------------------------------------ */
+
+/* 行内代码 */
+.prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+/* 代码块容器 */
+.prose pre {
+  margin: 1.5em 0;
+  padding: var(--space4) var(--space6);
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  tab-size: 2;
+}
+
+.prose pre code {
+  font-family: var(--font-mono);
+  font-size: inherit;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  white-space: pre;
+}
+
+/* 代码块滚动条（WebKit） */
+.prose pre::-webkit-scrollbar {
+  height: 8px;
+}
+.prose pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+.prose pre::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-sm);
+}
+
+/* ------------------------------------------------------------
+ * 语法高亮（highlight.js 类名）
+ * 颜色走语义变量，亮暗自动切换。
+ * 如果你用 rehype-pretty-code，类名不同，按需替换。
+ * ------------------------------------------------------------ */
+.prose .hljs-comment,
+.prose .hljs-quote {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.prose .hljs-keyword,
+.prose .hljs-selector-tag,
+.prose .hljs-literal,
+.prose .hljs-type {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.prose .hljs-string,
+.prose .hljs-regexp,
+.prose .hljs-addition {
+  color: var(--color-success);
+}
+
+.prose .hljs-number,
+.prose .hljs-symbol,
+.prose .hljs-bullet {
+  color: var(--color-accent);
+}
+
+.prose .hljs-function,
+.prose .hljs-title,
+.prose .hljs-section {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.prose .hljs-variable,
+.prose .hljs-template-variable,
+.prose .hljs-attr,
+.prose .hljs-attribute {
+  color: var(--color-warning);
+}
+
+.prose .hljs-built_in,
+.prose .hljs-class .hljs-title {
+  color: var(--color-primary-hover);
+}
+
+.prose .hljs-deletion {
+  color: var(--color-danger);
+}
+
+.prose .hljs-emphasis {
+  font-style: italic;
+}
+
+.prose .hljs-strong {
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------
+ * 表格
+ * ------------------------------------------------------------ */
+.prose table {
+  width: 100%;
+  margin: 1.5em 0;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  display: block;
+  overflow-x: auto;
+}
+
+.prose thead {
+  border-bottom: 2px solid var(--color-border-strong);
+}
+
+.prose th {
+  font-weight: 600;
+  text-align: left;
+  padding: var(--space2) var(--space3);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.prose td {
+  padding: var(--space2) var(--space3);
+  border-top: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.prose tbody tr:hover {
+  background: var(--color-bg-subtle);
+}
+
+.prose th:first-child,
+.prose td:first-child {
+  padding-left: var(--space4);
+}
+
+.prose th:last-child,
+.prose td:last-child {
+  padding-right: var(--space4);
+}
+
+/* 表格内段落不要额外间距 */
+.prose th p,
+.prose td p {
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+ * 图片与图注
+ * ------------------------------------------------------------ */
+.prose img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5em auto;
+  display: block;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.prose figure {
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+.prose figure img {
+  margin-bottom: var(--space2);
+}
+
+.prose figcaption {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-style: normal;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+ * 分割线
+ * ------------------------------------------------------------ */
+.prose hr {
+  margin: var(--space12) 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  position: relative;
+}
+
+/* 居中的小装饰，像宣纸上的“骑缝” */
+.prose hr::after {
+  content: '◆';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 var(--space3);
+  background: var(--color-bg);
+  color: var(--color-border-strong);
+  font-size: 0.75em;
+  line-height: 1;
+}
+
+/* ------------------------------------------------------------
+ * 脚注（rehype / remark-gfm 输出）
+ * ------------------------------------------------------------ */
+.prose .footnotes {
+  margin-top: var(--space12);
+  padding-top: var(--space6);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.prose .footnotes ol {
+  padding-left: 1.25em;
+}
+
+.prose .footnotes li {
+  margin-top: 0.5em;
+}
+
+.prose .footnotes li:target {
+  background: var(--color-primary-bg);
+  border-radius: var(--radius-sm);
+  padding: 0.25em 0.5em;
+  margin-left: -0.5em;
+}
+
+/* 脚注引用上标 */
+.prose sup a[data-footnote-ref] {
+  font-size: 0.75em;
+  padding: 0 0.15em;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.prose sup a[data-footnote-ref]:hover {
+  text-decoration: underline;
+}
+
+/* 返回脚注引用 */
+.prose a[data-footnote-backref] {
+  margin-left: 0.25em;
+  font-size: 0.85em;
+  text-decoration: none;
+  color: var(--color-text-muted);
+}
+
+.prose a[data-footnote-backref]:hover {
+  color: var(--color-primary);
+}
+
+/* ------------------------------------------------------------
+ * 缩写、键盘、高亮
+ * ------------------------------------------------------------ */
+.prose abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+.prose kbd {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  padding: 0.15em 0.4em;
+  border: 1px solid var(--color-border-strong);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-secondary);
+}
+
+/* ------------------------------------------------------------
+ * 暗色微调（仅处理语义变量无法覆盖的细节）
+ * ------------------------------------------------------------ */
+[data-theme='dark'] .prose :not(pre) > code {
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+}
+
+[data-theme='dark'] .prose pre {
+  background: var(--color-surface);
+}
+
+[data-theme='dark'] .prose img {
+  /* 暗色下图片降一点亮度，避免白底图片刺眼 */
+  filter: brightness(0.92);
+}
+
+/* ------------------------------------------------------------
+ * 打印
+ * ------------------------------------------------------------ */
+@media print {
+  .prose {
+    max-width: none;
+    font-size: 11pt;
+    color: #000;
+  }
+
+  .prose a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .prose a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #555;
+  }
+
+  .prose .heading-anchor {
+    display: none;
+  }
+
+  .prose pre {
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .prose img {
+    box-shadow: none;
+    filter: none;
+    page-break-inside: avoid;
+  }
+
+  .prose :where(h1, h2, h3, h4) {
+    page-break-after: avoid;
+  }
+}
+
+/* ------------------------------------------------------------
+ * 减少动效偏好
+ * ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .prose * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
