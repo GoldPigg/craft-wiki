@@ -8,10 +8,7 @@ const fullPath = computed(() => {
   return Array.isArray(p) ? p.join('/') : p
 })
 
-const { data } = await useFetch(`/api/wiki/${fullPath.value}`, {
-  key: `wiki-${fullPath.value}`,
-})
-
+const { data } = await useFetch(`/api/wiki/${fullPath.value}`)
 
 const wikiTree = inject(wikiTreeKey)
 const curNode = computed(() => fullPath.value ? wikiTree?.value.getNodeByFullPath(fullPath.value) : undefined)
