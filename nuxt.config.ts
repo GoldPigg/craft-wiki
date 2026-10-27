@@ -3,6 +3,7 @@ import { getPagePaths } from './shared/wikiTree.ts'
 import tree from './content/wiki.config.ts'
 
 export default defineNuxtConfig({
+  ssr: true,
   modules: ['@nuxt/icon/module'],
   icon: {
     clientBundle: {
