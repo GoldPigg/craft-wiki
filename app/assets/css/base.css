@@ -1,3 +1,30 @@
 body {
     margin: 0;
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  user-select: none;
+}
+
+/* 新主题从点击位置圆形扩散 */
+::view-transition-new(root) {
+  animation: theme-circle-in 0.5s ease-out;
+}
+
+@keyframes theme-circle-in {
+  from {
+    clip-path: circle(0% at 50% 50%);
+  }
+  to {
+    clip-path: circle(150% at 50% 50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

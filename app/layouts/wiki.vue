@@ -33,6 +33,26 @@ const wikiTree = inject(wikiTreeKey)
 </template>
 
 <style scoped>
+.layout::before {
+    background-image: var(--paper-texture);
+    background-repeat: repeat;
+    background-size: var(--paper-texture-size);
+    opacity: var(--paper-texture-opacity);
+    mix-blend-mode: var(--paper-texture-blend);
+    content: '';
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.layout {
+    position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: var(--color-bg);
+}
+
 .md-main {
     margin-top: var(--space8);
 }

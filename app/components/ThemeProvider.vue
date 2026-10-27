@@ -1,16 +1,18 @@
 <script setup lang="ts">
+import { lightTheme, darkTheme } from '~/composables/useThemeConfig'
+import { themeConfigKey } from '~/utils/injectionKey'
 
-const themeConfig = reactive<ThemeConfig>(defaultTheme)
+const themeConfig = ref<ThemeConfig>(lightTheme)
 
 const styleObject = computed(() => {
     const res: Record<string, string> = {}
-    for (const [key, value] of Object.entries(themeConfig)) {
+    for (const [key, value] of Object.entries(themeConfig.value)) {
         res['--' + toKebab(key)] = value
     }
     return res
 })
 
-provide('themeConfig', themeConfig)
+provide(themeConfigKey, themeConfig)
 </script>
 
 <template>
