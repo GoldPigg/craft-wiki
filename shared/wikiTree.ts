@@ -31,7 +31,7 @@ export function getWikiTree(
 
   if (typeof tree === 'string') {
     res.fullPath = tree;
-    if (parent) nodeMap?.set(tree, parent)
+    if (parent) nodeMap?.set(tree, res)
   }
   else {
     for (const [key, value] of Object.entries(tree)) {
@@ -70,6 +70,7 @@ export class WikiTree {
     p = node
     while (p) {
       p.actived = true
+      p.opened = true
       p = p.parent
     }
     this.curNode = node

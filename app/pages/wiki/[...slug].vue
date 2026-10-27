@@ -8,7 +8,15 @@ const fullPath = computed(() => {
   return Array.isArray(p) ? p.join('/') : p
 })
 
-const { data } = await useFetch(`/api/wiki/${fullPath.value}`)
+const { data, error } = await useFetch(`/api/wiki/${fullPath.value}`)
+
+if (error.value) {
+  throw createError({
+    statusCode: error.value.status ?? 500,
+    statusMessage: error.value.message ?? '加载失败',
+    fatal: true,
+  })
+}
 
 const wikiTree = inject(wikiTreeKey)
 const curNode = computed(() => fullPath.value ? wikiTree?.value.getNodeByFullPath(fullPath.value) : undefined)
