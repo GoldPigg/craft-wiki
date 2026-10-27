@@ -91,10 +91,10 @@ watch(() => route.fullPath, () => {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: var(--border-width) solid var(--header-border);
   box-shadow: 0 1px 0 var(--color-bg);
   transition: box-shadow var(--transition-base);
 }
@@ -123,14 +123,15 @@ watch(() => route.fullPath, () => {
   max-width: var(--content-max);
   margin: 0 auto;
   height: var(--header-height);
-  padding: 0 var(--space-4);
+  padding: 0 var(--space4);
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space6);
 }
 
 /* ---------- 左：Logo ---------- */
 .app-header__logo {
+  user-select: none;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -180,7 +181,7 @@ watch(() => route.fullPath, () => {
 .app-header__nav {
   display: flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--space1);
   flex: 1;
 }
 
@@ -225,7 +226,7 @@ watch(() => route.fullPath, () => {
 .app-header__actions {
   display: flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--space1);
   flex-shrink: 0;
 }
 
@@ -237,7 +238,7 @@ watch(() => route.fullPath, () => {
   align-items: center;
   justify-content: center;
   background: transparent;
-  border: 1px solid transparent;
+  border: var(--border-width) solid transparent;
   color: var(--color-text-muted);
   cursor: pointer;
   transition:
@@ -279,12 +280,12 @@ watch(() => route.fullPath, () => {
   background: color-mix(in srgb, var(--color-bg) 96%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: var(--border-width) solid var(--color-border);
   box-shadow: 0 4px 12px rgba(59, 47, 37, 0.08);
-  padding: var(--space-2) var(--space-4) var(--space-4);
+  padding: var(--space2) var(--space4) var(--space4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space1);
   transform-origin: top;
 }
 
@@ -293,7 +294,7 @@ watch(() => route.fullPath, () => {
 }
 
 .mobile-nav a {
-  padding: var(--space-3) var(--space-3);
+  padding: var(--space3) var(--space3);
   font-family: var(--font-ui);
   font-size: 0.9375rem;
   color: var(--color-text-secondary);
@@ -332,7 +333,7 @@ watch(() => route.fullPath, () => {
 
   .app-header__inner {
     justify-content: space-between;
-    gap: var(--space-2);
+    gap: var(--space2);
   }
 
   .app-header__menu-btn {

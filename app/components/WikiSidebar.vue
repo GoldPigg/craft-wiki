@@ -76,7 +76,7 @@ aside.wiki-sidebar {
 nav.wiki-sidebar {
   font-family: var(--font-ui);
   font-size: 0.875rem;
-  border-right: 1px solid var(--color-border);
+  border-right: var(--border-width) solid var(--color-border);
 }
 
 .wiki-nav-list {

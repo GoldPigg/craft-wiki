@@ -59,13 +59,13 @@ function scrollTo(id: string) {
     font-size: var(--text-sm);
     font-weight: 600;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space2);
 }
 
 .toc ul {
     list-style: none;
     padding: 0;
-    border-left: 1px solid var(--color-border);
+    border-left: var(--border-width) solid var(--color-border);
 }
 
 .toc li a {

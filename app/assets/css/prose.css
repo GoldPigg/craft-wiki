@@ -57,7 +57,7 @@
   margin-top: 0;
   margin-bottom: var(--space6);
   padding-bottom: var(--space3);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: var(--border-width) solid var(--color-border);
 }
 
 .prose h2 {
@@ -65,7 +65,7 @@
   margin-top: var(--space12);
   margin-bottom: var(--space4);
   padding-bottom: var(--space2);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: var(--border-width) solid var(--color-border);
 }
 
 .prose h3 {
@@ -309,7 +309,7 @@
   font-size: 0.875em;
   padding: 0.15em 0.4em;
   background: var(--color-bg-subtle);
-  border: 1px solid var(--color-border);
+  border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-sm);
   color: var(--color-primary);
   white-space: nowrap;
@@ -320,7 +320,7 @@
   margin: 1.5em 0;
   padding: var(--space4) var(--space6);
   background: var(--color-bg-subtle);
-  border: 1px solid var(--color-border);
+  border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-md);
   overflow-x: auto;
   font-size: var(--text-sm);
@@ -440,7 +440,7 @@
 
 .prose td {
   padding: var(--space2) var(--space3);
-  border-top: 1px solid var(--color-border);
+  border-top: var(--border-width) solid var(--color-border);
   vertical-align: top;
 }
 
@@ -498,7 +498,7 @@
 .prose hr {
   margin: var(--space12) 0;
   border: none;
-  border-top: 1px solid var(--color-border);
+  border-top: var(--border-width) solid var(--color-border);
   position: relative;
 }
 
@@ -522,7 +522,7 @@
 .prose .footnotes {
   margin-top: var(--space12);
   padding-top: var(--space6);
-  border-top: 1px solid var(--color-border);
+  border-top: var(--border-width) solid var(--color-border);
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
 }
@@ -578,7 +578,7 @@
   font-family: var(--font-mono);
   font-size: 0.8em;
   padding: 0.15em 0.4em;
-  border: 1px solid var(--color-border-strong);
+  border: var(--border-width) solid var(--color-border-strong);
   border-bottom-width: 2px;
   border-radius: var(--radius-sm);
   background: var(--color-bg-subtle);
@@ -628,7 +628,7 @@
   }
 
   .prose pre {
-    border: 1px solid #ccc;
+    border: var(--border-width) solid #ccc;
     background: #f5f5f5;
     white-space: pre-wrap;
     word-break: break-word;

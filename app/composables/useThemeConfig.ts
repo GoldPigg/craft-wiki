@@ -7,6 +7,8 @@ const staticThemeConfig = {
     fontUi: "'Source Han Sans SC', system-ui, -apple-system, sans-serif",
     fontMono: "'JetBrains Mono', ui-monospace, 'SF Mono', monospace",
 
+    borderWidth: '1.5px',
+
     // 字号
     textXs: '0.75rem',      // 12px
     textSm: '0.875rem',     // 14px h6
@@ -74,6 +76,8 @@ const staticThemeConfig = {
     zModal: '100',
     zToast: '110',
 
+    paperTexture: "url('/textures/paper.svg')",
+
     // 纹理（data URI 单独拆出来，避免行太长）
     paperTextureSize: '200px 200px',
 }
@@ -86,6 +90,8 @@ export const lightTheme = {
     colorSurface: '#FFFFFF',       // 纯白 · 卡片、内容区
     colorSurfaceRaised: '#FFFFFF', // 纯白 · 弹窗、下拉
     colorBgSubtle: '#FDFAF5',      // 宣纸 50 · 代码块、浅背景
+    headerBg: '#F7F3EC',           // 宣纸 100 · Header 背景，与内容区同色
+    headerBorder: '#E8E0D0',       // 米灰 200 · Header 底边
 
     // 文本
     colorTextPrimary: '#3B2F25',   // 墨褐 700 · 正文
@@ -117,15 +123,58 @@ export const lightTheme = {
     colorFocusRing: '#2C3E7A',     // 黛蓝 700 · 键盘焦点环
 
     // 纹理
-    paperTextureOpacity: '0.06',   // 宣纸纹理强度
-    paperTextureBlend: 'multiply', // 亮色下正片叠底
+    paperTextureOpacity: '0.12',     // 宣纸纹理强度
+    paperTextureBlend: 'multiply',   // 亮色下正片叠底
 }
 
 export type ThemeConfig = typeof lightTheme
 
-export default {
-    setup() {
-        const themeConfig = inject(themeConfigKey)
-        return themeConfig
-    }
+export const darkTheme: ThemeConfig = {
+    ...staticThemeConfig,
+
+    colorBg: '#1E1914',            // 深墨褐 950 · 页面背景
+    colorSurface: '#262019',       // 深墨褐 900 · 卡片、内容区
+    colorSurfaceRaised: '#2E2720', // 深墨褐 800 · 弹窗、下拉、悬浮层
+    colorBgSubtle: '#2E2720',      // 深墨褐 800 · 代码块、浅背景
+    headerBg: '#262019',           // 深墨褐 900 · 比页面背景亮一档
+    headerBorder: '#4A4238',       // 深墨褐边框 · 比默认边框亮一档
+
+    // ---------- 文本 ----------
+    colorTextPrimary: '#E8E0D0',   // 宣纸白 200 · 正文
+    colorTextSecondary: '#B5A88F', // 浅驼 400 · 次要文字
+    colorTextMuted: '#8A7A64',     // 驼褐 500 · 辅助信息、占位符
+    colorTextInverse: '#1E1914',   // 深墨褐 950 · 浅色背景上的文字
+
+    // ---------- 边框：比表面亮一档 ----------
+    colorBorder: '#3A332A',        // 深墨褐边框 · 默认边框
+    colorBorderStrong: '#4A4238',  // 深墨褐边框 · 强调边框
+
+    // ---------- 主色（朱砂）：提亮降饱和 ----------
+    colorPrimary: '#E0705F',       // 朱砂 300 · 链接、主按钮
+    colorPrimaryHover: '#E88A7B',  // 朱砂提亮 · hover
+    colorPrimaryActive: '#C85A4A', // 朱砂压暗 · 按下
+    colorPrimaryBg: '#3A1F1A',     // 深朱砂调 · 选中态背景
+
+    // ---------- 辅色（黛蓝）：大幅提亮 ----------
+    colorAccent: '#7B9BCF',        // 黛蓝 500 · 分类标签、徽标
+    colorAccentHover: '#9AB5DE',   // 黛蓝 300 · hover
+    colorAccentBg: '#1E2A3D',      // 深黛蓝 · 辅色浅背景
+
+    // ---------- 状态：提亮降饱和 ----------
+    colorSuccess: '#6BAF7A',       // 苔绿 400 · 成功
+    colorWarning: '#D4A017',       // 鎏金 400 · 警告
+    colorDanger: '#E0705F',        // 朱砂 300 · 错误、危险
+
+    // ---------- 焦点 ----------
+    colorFocusRing: '#7B9BCF',     // 黛蓝 500 · 键盘焦点环
+
+    // ---------- 纹理 ----------
+    paperTextureOpacity: '0.04',     // 暗色下纹理更克制
+    paperTextureBlend: 'screen',     // 暗色下滤色提亮
+    paperTextureSize: '240px 240px', // 暗色下颗粒略大，细节感知降低
+}
+
+export default function(){
+    const themeConfig = inject(themeConfigKey)
+    return { themeConfig }
 }
