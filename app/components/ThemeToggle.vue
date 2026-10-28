@@ -4,9 +4,6 @@ const { themeConfig } = useThemeConfig()
 const isDark = ref(false)
 
 async function toggle() {
-    const vw = window.innerWidth
-    const vh = window.innerHeight
-    console.log(vw, vh)
     if (!themeConfig) return
     const transiton = document.startViewTransition(async () => {
         themeConfig.value = isDark.value ? lightTheme : darkTheme

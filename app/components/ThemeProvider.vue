@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { lightTheme, darkTheme } from '~/composables/useThemeConfig'
+import { lightTheme } from '~/composables/useThemeConfig'
 import { themeConfigKey } from '~/utils/injectionKey'
 
 const themeConfig = ref<ThemeConfig>(lightTheme)
