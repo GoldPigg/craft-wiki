@@ -1,5 +1,9 @@
 body {
-    margin: 0;
+  margin: 0;
+}
+
+::view-transition-group(root) {
+  animation-duration: 0.8s; 
 }
 
 ::view-transition-old(root),
@@ -11,16 +15,7 @@ body {
 
 /* 新主题从点击位置圆形扩散 */
 ::view-transition-new(root) {
-  animation: theme-circle-in 0.5s ease-out;
-}
-
-@keyframes theme-circle-in {
-  from {
-    clip-path: circle(0% at 50% 50%);
-  }
-  to {
-    clip-path: circle(150% at 50% 50%);
-  }
+  clip-path: url(#piying-seal-clip);
 }
 
 @media (prefers-reduced-motion: reduce) {

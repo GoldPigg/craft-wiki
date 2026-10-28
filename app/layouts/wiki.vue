@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Piying from '~/components/shapes/Piying.vue';
 import { wikiTreeKey } from '~/utils/injectionKey';
 
 declare module 'nuxt/app' {
@@ -23,6 +24,7 @@ const wikiTree = inject(wikiTreeKey)
 
 <template>
     <div class="layout">
+        <Piying/>
         <Header :nav-items="navItems" />
         <div class="md-main">
             <div class="md-main--inner">
