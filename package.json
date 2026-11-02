@@ -10,8 +10,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/fonts": "1.2.0",
     "@nuxt/icon": "2.6.1",
     "gray-matter": "^4.0.3",
+    "gsap": "^3.15.0",
     "hast": "^1.0.0",
     "nuxt": "^4.6.2",
     "rehype-sanitize": "^6.0.0",
@@ -26,6 +28,7 @@
     "vue-router": "^5.4.0"
   },
   "devDependencies": {
+    "@hypernym/nuxt-gsap": "^2.4.3",
     "@iconify-json/lucide": "^1.2.147",
     "@types/hast": "^3.0.5",
     "@types/node": "^26.6.5"
