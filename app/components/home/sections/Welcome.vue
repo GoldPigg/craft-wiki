@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Kettle from '../Kettle.vue'
 
 const { $SplitText, $gsap } = useNuxtApp()
 
@@ -16,7 +17,14 @@ useGsap(() => {
             if (titleRef.value?.style?.opacity) titleRef.value.style.opacity = '1'
         }
     })
-    $gsap.to("#title", { opacity: 1 })
+    $gsap.to("section", { opacity: 1 })
+    $gsap.from('.kettle-container', {
+        y: 150,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power4",
+        stagger: 0.04,
+    })
 })
 
 </script>
@@ -27,6 +35,7 @@ useGsap(() => {
             <span> 守艺志 </span>
             <span style="font-size: 0.4em; justify-content: flex-end;"> Craft Wiki </span>
         </span>
+        <Kettle height="30dvh" style="position: absolute;left: 5dvw;bottom: 5dvh;" />
     </section>
 </template>
 
@@ -38,12 +47,13 @@ section {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
+    opacity: 0;
 }
 
 #title {
     font-size: max(5.125rem, min(13.3333vw + 2rem, 18rem));
     width: 50%;
-    opacity: 0;
     display: flex;
     flex-direction: column;
     font-family: 'LiyuShoushu';
