@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     extraPlugins: {
       scrollTrigger: true,
       draggable: true,
+      scrollTo: true,
     },
     clubPlugins: {
       splitText: true,

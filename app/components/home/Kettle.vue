@@ -93,6 +93,11 @@ watch(progress, (v) => {
                     progress.value = 1 - this.progress()
                 }
             })
+        $gsap.to(window, {
+            scrollTo: { y: '.section-2' },
+            duration: 1.5,
+            ease: 'power2.inOut',
+        })
     }
 })
 
@@ -108,7 +113,7 @@ watch(progress, (v) => {
         </div>
         <Teleport to="body" defer>
             <Stream v-show="isStreaming" :stream-width="2" :progress="streamProgress"
-                :style="{ position: 'fixed', top: y + 'px', left: x + 'px', height: '100dvh', width: '30dvw', zIndex: -1 }" />
+                :style="{ position: 'fixed', top: y + 'px', left: x + 'px', height: '120dvh', width: '30dvw', zIndex: -1 }" />
         </Teleport>
     </div>
 </template>

@@ -1,4 +1,3 @@
-
 export default function (callback: () => void) {
 
     const { $gsap } = useNuxtApp()
