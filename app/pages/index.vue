@@ -21,9 +21,9 @@ useGsap(() => {
 <template>
     <div id="smooth-wrapper">
         <div id="smooth-content" style="user-select: none;">
-            <Welcome />
-            <Dance />
-            <WuLong />
+            <Welcome class="section-1"/>
+            <Dance class="section-2"/>
+            <WuLong class="section-3"/>
             <p v-for="i in 100">{{ i }}</p>
         </div>
     </div>
