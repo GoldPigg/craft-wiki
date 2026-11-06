@@ -1,11 +1,11 @@
 ---
 title: 项目分类说明
-updatedAt: 2025-11-05
+updatedAt: 2025-11-06
 ---
 
 # 项目分类说明
 
-本 wiki 按“地区—省份—门类”三级组织条目：先分北方、东部、南方、西部四个地区，其下按省级行政区排列，再按国家级非物质文化遗产的十大门类归入具体项目。这样的结构便于从地理与门类两个方向检索同一批项目。
+本 wiki 按“地区—省份—门类—项目”四级组织内容：先分北方、东部、南方、西部四个地区，其下按省级行政区设索引页，再按国家级非物质文化遗产的十大门类归入具体项目。
 
 ## 十大门类
 
@@ -33,20 +33,23 @@ updatedAt: 2025-11-05
 
 ## 目录与命名约定
 
-默认情况下，一个省级行政区对应一个页面，路径为 `content/wiki/<地区>/<省份>.md`：
+- 省份索引：`content/wiki/<地区>/<省份>/index.md`，如 `content/wiki/northern/beijing/index.md`；
+- 项目条目：`content/wiki/<地区>/<省份>/<门类>/<项目>.md`，如 `content/wiki/northern/beijing/craft/jingtailan.md`；
+- 门类目录：`folk-literature`、`traditional-music`、`traditional-dance`、`traditional-opera`、`quyi`、`acrobatics`、`fine-arts`、`craft`、`medicine`、`folk-custom`；
+- 配图：`public/images/<地区>/<省份>/<门类>/<项目>.jpg`（或 `.png`、`.svg`），页面通过 `/images/...` 引用。
 
-- 地区目录：`northern`、`eastern`、`southern`、`western`；
-- 省份文件名：省级行政区名称的汉语拼音，如 `beijing`、`guangdong`、`xinjiang`。
+项目页的 frontmatter 含 `title`、`category`、`region`、`province`、`updatedAt`、`image`；正文依次为一级标题、概述段、图片与图注、四个二级标题（历史源流 / 技艺特征或艺术特征 / 传承与保护 / 相关条目）。
 
-页面内部保持“门类—项目”两级：二级标题为门类（如 `## 传统技艺`），三级标题为项目（如 `### 景泰蓝制作技艺`），项目正文以加粗小标题分列“历史源流”“技艺特征（或艺术特征）”“传承与保护”。
-
-省份页面包含 YAML frontmatter（`title`、`category`、`region`、`province`、`updatedAt`），正文以一级标题和概述开头，概述结尾注明该省收录的项目数与门类数，最后设“相关条目”一节，链接所属地区与相邻省份。
-
-当某个省份收录的项目超过 30 项时，按门类拆分为 `content/wiki/<地区>/<省份>/<门类>.md`，门类文件名使用：`folk-literature`、`traditional-music`、`traditional-dance`、`traditional-opera`、`quyi`、`acrobatics`、`fine-arts`、`craft`、`medicine`、`folk-custom`。当前 31 个省份的项目数均在 30 项以内，因此都采用单页合并的形式。
+省份索引页的 frontmatter 为 `title`、`category: 省份概览`、`region`、`province`、`updatedAt`，正文列出该省各门类下的项目与一句话摘要。
 
 ## 如何新增条目
 
-1. 打开对应省份页面，在相应门类的二级标题下，按十大门类的固定顺序追加三级标题与正文段落；
-2. 同步更新页面开头的“收录 N 项、涵盖 N 个门类”统计句，以及地区简介中的省份索引；
-3. 在 `content/wiki.config.ts` 中登记：省份为单页时节点值写成 `"地区/省份"` 字符串；若已按门类拆分，则把该省份节点改为 `{ "门类名": "地区/省份/门类" }` 的嵌套结构；
-4. 新增省份时，除新建页面外，还需在配置的地区节点下补充该省份，并在地区简介中补上索引。
+1. 新建项目页 `content/wiki/<地区>/<省份>/<门类>/<项目>.md`，按上述结构撰写，并在 frontmatter 写 `image: /images/...`；
+2. 把配图放进 `public/images/<地区>/<省份>/<门类>/`，图注注明作者、许可与来源；
+3. 在 `content/wiki.config.ts` 该省份节点的对应门类下登记：`"项目名": "<地区>/<省份>/<门类>/<项目>"`；
+4. 在省份索引页的项目一览中补上条目与摘要，并更新开头的项目计数；
+5. 若新增省份，还需在地区导览页的索引中补上该省。
+
+## 图片使用原则
+
+优先选用 Wikimedia Commons 等自由版权图库中对照明确的实物、演出或传承人照片，并在图注中写明作者与许可；不得使用来源不明或版权受限的图片。若没有把握确认照片与项目对应，宁可使用本站绘制的图卡，也不要张冠李戴。
