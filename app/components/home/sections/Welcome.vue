@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import Kettle from '../Kettle.vue'
+import { useText } from '@fontize/vue'
 
 const { $SplitText, $gsap } = useNuxtApp()
 
 const titleRef = useTemplateRef<HTMLSpanElement>('titleRef')
-useGsap(() => {
+useGsap(async () => {
 
     const split = $SplitText.create("#title", { type: "chars" })
     $gsap.from(split.chars, {
@@ -27,13 +28,16 @@ useGsap(() => {
     })
 })
 
+const title = useText('守艺志', 'ZhongQiZhiMang')
+const subTitle = useText('Craft Wiki', 'ZhongQiZhiMang')
+
 </script>
 
 <template>
     <section>
         <span id="title" ref="titleRef">
-            <span> 守艺志 </span>
-            <span style="font-size: 0.4em; justify-content: flex-end;"> Craft Wiki </span>
+            <span v-text="title"></span>
+            <span v-text="subTitle" style="font-size: 0.4em; justify-content: flex-end;"></span>
         </span>
         <Kettle height="30dvh" style="position: absolute;left: 5dvw;bottom: 5dvh;" />
     </section>
@@ -56,7 +60,7 @@ section {
     width: 50%;
     display: flex;
     flex-direction: column;
-    font-family: 'LiyuShoushu';
+    font-family: 'ZhongQiZhiMang';
 }
 
 #title span {
