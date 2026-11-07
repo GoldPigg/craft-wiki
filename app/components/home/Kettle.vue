@@ -9,7 +9,7 @@ const props = defineProps<{
 const n = 400
 const maxY = 25
 const maxAngle = 40
-const { $gsap, $Draggable, $ScrollTrigger } = useNuxtApp()
+const { $gsap, $Draggable, $ScrollTrigger, $ScrollSmoother } = useNuxtApp()
 const kettleRef = useTemplateRef<typeof Kettle>('kettle')
 const fireChildsRef = useTemplateRef<HTMLDivElement[]>('fire-child')
 const progress = ref(0)
@@ -93,6 +93,7 @@ watch(progress, (v) => {
                     progress.value = 1 - this.progress()
                 }
             })
+        $ScrollSmoother.get()?.paused(false)
         $gsap.to(window, {
             scrollTo: { y: '.section-2' },
             duration: 1.5,

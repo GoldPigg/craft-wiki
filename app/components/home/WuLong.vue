@@ -42,7 +42,6 @@ useGsap(() => {
         inertia: true,
         throwResistance: 2000,
         maxDuration: 1.5,
-        edgeResistance: 0.8,
         overshootTolerance: 0,
         bounds: ".dragon-ball-container",
         onDrag: function () {

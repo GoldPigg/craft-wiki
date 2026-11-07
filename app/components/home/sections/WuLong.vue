@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import WuLong from '../WuLong.vue';
 
-const { $gsap, $ScrollTrigger } = useNuxtApp()
+const { $gsap, $ScrollTrigger, $ScrollSmoother } = useNuxtApp()
 
 const model = reactive<{ progress: number, changedByDrag: boolean }>({ progress: 0, changedByDrag: false })
 const dragged = ref(false)
@@ -35,7 +35,10 @@ useGsap(() => {
         animation: $gsap.to(track, {
             x: () => -getScrollAmount(),
             ease: 'none',
-        })
+        }),
+        onEnter() {
+            $ScrollSmoother.get()?.paused(false)
+        }
     })
 
 
