@@ -1,3 +1,11 @@
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-width: none;
+}
+
 body {
   margin: 0;
 }
