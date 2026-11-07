@@ -19,13 +19,13 @@ updatedAt: 2025-11-05
 
 ## 本区条目
 
-- [重庆市](/wiki/western/chongqing/index)（3 项：川江号子、梁平木版年画、荣昌陶器制作技艺）
-- [四川省](/wiki/western/sichuan/index)（4 项：川剧、四川清音、蜀绣、蜀锦织造技艺）
-- [贵州省](/wiki/western/guizhou/index)（4 项：侗族大歌、苗绣、茅台酒酿制技艺、苗族蜡染技艺）
-- [云南省](/wiki/western/yunnan/index)（3 项：傣族孔雀舞、纳西族东巴画、白族扎染技艺）
-- [西藏自治区](/wiki/western/xizang/index)（3 项：藏戏、藏族唐卡、藏医药）
-- [陕西省](/wiki/western/shaanxi/index)（4 项：秦腔、陕北说书、凤翔木版年画、耀州窑陶瓷烧制技艺）
-- [甘肃省](/wiki/western/gansu/index)（3 项：花儿、兰州太平鼓、庆阳香包绣制）
-- [青海省](/wiki/western/qinghai/index)（3 项：格萨尔、热贡艺术、土族盘绣）
-- [宁夏回族自治区](/wiki/western/ningxia/index)（2 项：贺兰砚制作技艺、回族服饰）
-- [新疆维吾尔自治区](/wiki/western/xinjiang/index)（3 项：十二木卡姆、维吾尔族艾德莱斯绸织染技艺、麦西热甫）
+- [重庆市](/wiki/western/chongqing/intro)（3 项：川江号子、梁平木版年画、荣昌陶器制作技艺）
+- [四川省](/wiki/western/sichuan/intro)（4 项：川剧、四川清音、蜀绣、蜀锦织造技艺）
+- [贵州省](/wiki/western/guizhou/intro)（4 项：侗族大歌、苗绣、茅台酒酿制技艺、苗族蜡染技艺）
+- [云南省](/wiki/western/yunnan/intro)（3 项：傣族孔雀舞、纳西族东巴画、白族扎染技艺）
+- [西藏自治区](/wiki/western/xizang/intro)（3 项：藏戏、藏族唐卡、藏医药）
+- [陕西省](/wiki/western/shaanxi/intro)（4 项：秦腔、陕北说书、凤翔木版年画、耀州窑陶瓷烧制技艺）
+- [甘肃省](/wiki/western/gansu/intro)（3 项：花儿、兰州太平鼓、庆阳香包绣制）
+- [青海省](/wiki/western/qinghai/intro)（3 项：格萨尔、热贡艺术、土族盘绣）
+- [宁夏回族自治区](/wiki/western/ningxia/intro)（2 项：贺兰砚制作技艺、回族服饰）
+- [新疆维吾尔自治区](/wiki/western/xinjiang/intro)（3 项：十二木卡姆、维吾尔族艾德莱斯绸织染技艺、麦西热甫）

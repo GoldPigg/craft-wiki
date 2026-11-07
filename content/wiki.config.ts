@@ -10,7 +10,7 @@ export const wikiConfig: WikiConfig = {
     "北方地区": {
         "简介": "northern/intro",
         "北京市": {
-            "简介": "northern/beijing/index",
+            "简介": "northern/beijing/intro",
             "传统戏剧": {
                 "京剧": "northern/beijing/traditional-opera/jingju",
             },
@@ -28,7 +28,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "天津市": {
-            "简介": "northern/tianjin/index",
+            "简介": "northern/tianjin/intro",
             "传统美术": {
                 "杨柳青木版年画": "northern/tianjin/fine-arts/yangliuqing",
             },
@@ -37,7 +37,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "河北省": {
-            "简介": "northern/hebei/index",
+            "简介": "northern/hebei/intro",
             "传统戏剧": {
                 "河北梆子": "northern/hebei/traditional-opera/hebeibangzi",
             },
@@ -52,7 +52,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "山西省": {
-            "简介": "northern/shanxi/index",
+            "简介": "northern/shanxi/intro",
             "传统音乐": {
                 "左权开花调": "northern/shanxi/traditional-music/kaihuadiao",
             },
@@ -64,7 +64,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "内蒙古自治区": {
-            "简介": "northern/neimenggu/index",
+            "简介": "northern/neimenggu/intro",
             "传统音乐": {
                 "蒙古族长调民歌": "northern/neimenggu/traditional-music/changdiao",
                 "蒙古族马头琴音乐": "northern/neimenggu/traditional-music/morin-khuur",
@@ -74,7 +74,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "辽宁省": {
-            "简介": "northern/liaoning/index",
+            "简介": "northern/liaoning/intro",
             "传统戏剧": {
                 "海城喇叭戏": "northern/liaoning/traditional-opera/haicheng-laba",
             },
@@ -83,7 +83,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "吉林省": {
-            "简介": "northern/jilin/index",
+            "简介": "northern/jilin/intro",
             "传统舞蹈": {
                 "朝鲜族农乐舞": "northern/jilin/traditional-dance/nongle-wu",
             },
@@ -92,7 +92,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "黑龙江省": {
-            "简介": "northern/heilongjiang/index",
+            "简介": "northern/heilongjiang/intro",
             "民间文学": {
                 "赫哲族伊玛堪": "northern/heilongjiang/folk-literature/yimakan",
             },
@@ -101,7 +101,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "山东省": {
-            "简介": "northern/shandong/index",
+            "简介": "northern/shandong/intro",
             "传统戏剧": {
                 "柳子戏": "northern/shandong/traditional-opera/liuzixi",
             },
@@ -116,7 +116,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "河南省": {
-            "简介": "northern/henan/index",
+            "简介": "northern/henan/intro",
             "传统戏剧": {
                 "豫剧": "northern/henan/traditional-opera/yuju",
             },
@@ -134,7 +134,7 @@ export const wikiConfig: WikiConfig = {
     "东部地区": {
         "简介": "eastern/intro",
         "上海市": {
-            "简介": "eastern/shanghai/index",
+            "简介": "eastern/shanghai/intro",
             "传统戏剧": {
                 "沪剧": "eastern/shanghai/traditional-opera/huju",
             },
@@ -143,7 +143,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "江苏省": {
-            "简介": "eastern/jiangsu/index",
+            "简介": "eastern/jiangsu/intro",
             "传统戏剧": {
                 "昆曲": "eastern/jiangsu/traditional-opera/kunqu",
             },
@@ -159,7 +159,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "浙江省": {
-            "简介": "eastern/zhejiang/index",
+            "简介": "eastern/zhejiang/intro",
             "传统戏剧": {
                 "越剧": "eastern/zhejiang/traditional-opera/yueju",
             },
@@ -171,7 +171,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "安徽省": {
-            "简介": "eastern/anhui/index",
+            "简介": "eastern/anhui/intro",
             "传统戏剧": {
                 "黄梅戏": "eastern/anhui/traditional-opera/huangmeixi",
             },
@@ -183,7 +183,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "福建省": {
-            "简介": "eastern/fujian/index",
+            "简介": "eastern/fujian/intro",
             "传统音乐": {
                 "南音": "eastern/fujian/traditional-music/nanyin",
             },
@@ -199,7 +199,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "江西省": {
-            "简介": "eastern/jiangxi/index",
+            "简介": "eastern/jiangxi/intro",
             "传统戏剧": {
                 "弋阳腔": "eastern/jiangxi/traditional-opera/yiyangqiang",
             },
@@ -212,7 +212,7 @@ export const wikiConfig: WikiConfig = {
     "南方地区": {
         "简介": "southern/intro",
         "广东省": {
-            "简介": "southern/guangdong/index",
+            "简介": "southern/guangdong/intro",
             "传统音乐": {
                 "广东音乐": "southern/guangdong/traditional-music/guangdong-yinyue",
             },
@@ -230,7 +230,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "广西壮族自治区": {
-            "简介": "southern/guangxi/index",
+            "简介": "southern/guangxi/intro",
             "传统戏剧": {
                 "桂剧": "southern/guangxi/traditional-opera/guiju",
             },
@@ -240,7 +240,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "海南省": {
-            "简介": "southern/hainan/index",
+            "简介": "southern/hainan/intro",
             "传统戏剧": {
                 "琼剧": "southern/hainan/traditional-opera/qiongju",
             },
@@ -250,7 +250,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "湖南省": {
-            "简介": "southern/hunan/index",
+            "简介": "southern/hunan/intro",
             "传统戏剧": {
                 "花鼓戏": "southern/hunan/traditional-opera/huaguxi",
             },
@@ -263,7 +263,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "湖北省": {
-            "简介": "southern/hubei/index",
+            "简介": "southern/hubei/intro",
             "传统戏剧": {
                 "汉剧": "southern/hubei/traditional-opera/hanju",
             },
@@ -278,7 +278,7 @@ export const wikiConfig: WikiConfig = {
     "西部地区": {
         "简介": "western/intro",
         "重庆市": {
-            "简介": "western/chongqing/index",
+            "简介": "western/chongqing/intro",
             "传统音乐": {
                 "川江号子": "western/chongqing/traditional-music/chuanjiang-haozi",
             },
@@ -290,7 +290,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "四川省": {
-            "简介": "western/sichuan/index",
+            "简介": "western/sichuan/intro",
             "传统戏剧": {
                 "川剧": "western/sichuan/traditional-opera/chuanju",
             },
@@ -305,7 +305,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "贵州省": {
-            "简介": "western/guizhou/index",
+            "简介": "western/guizhou/intro",
             "传统音乐": {
                 "侗族大歌": "western/guizhou/traditional-music/dongzu-dage",
             },
@@ -318,7 +318,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "云南省": {
-            "简介": "western/yunnan/index",
+            "简介": "western/yunnan/intro",
             "传统舞蹈": {
                 "傣族孔雀舞": "western/yunnan/traditional-dance/kongque-wu",
             },
@@ -330,7 +330,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "西藏自治区": {
-            "简介": "western/xizang/index",
+            "简介": "western/xizang/intro",
             "传统戏剧": {
                 "藏戏": "western/xizang/traditional-opera/zangxi",
             },
@@ -342,7 +342,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "陕西省": {
-            "简介": "western/shaanxi/index",
+            "简介": "western/shaanxi/intro",
             "传统戏剧": {
                 "秦腔": "western/shaanxi/traditional-opera/qinqiang",
             },
@@ -357,7 +357,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "甘肃省": {
-            "简介": "western/gansu/index",
+            "简介": "western/gansu/intro",
             "传统音乐": {
                 "花儿": "western/gansu/traditional-music/huaer",
             },
@@ -369,7 +369,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "青海省": {
-            "简介": "western/qinghai/index",
+            "简介": "western/qinghai/intro",
             "民间文学": {
                 "格萨尔": "western/qinghai/folk-literature/gesar",
             },
@@ -381,7 +381,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "宁夏回族自治区": {
-            "简介": "western/ningxia/index",
+            "简介": "western/ningxia/intro",
             "传统技艺": {
                 "贺兰砚制作技艺": "western/ningxia/craft/helanyan",
             },
@@ -390,7 +390,7 @@ export const wikiConfig: WikiConfig = {
             },
         },
         "新疆维吾尔自治区": {
-            "简介": "western/xinjiang/index",
+            "简介": "western/xinjiang/intro",
             "传统音乐": {
                 "十二木卡姆": "western/xinjiang/traditional-music/muqam",
             },

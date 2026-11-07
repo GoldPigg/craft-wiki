@@ -19,9 +19,9 @@ updatedAt: 2025-11-05
 
 ## 本区条目
 
-- [上海市](/wiki/eastern/shanghai/index)（2 项：沪剧、顾绣）
-- [江苏省](/wiki/eastern/jiangsu/index)（5 项：昆曲、苏州评弹、苏绣、南京云锦木机妆花手工织造技艺、宜兴紫砂陶制作技艺）
-- [浙江省](/wiki/eastern/zhejiang/index)（3 项：越剧、东阳木雕、龙泉青瓷烧制技艺）
-- [安徽省](/wiki/eastern/anhui/index)（3 项：黄梅戏、徽州三雕、宣纸制作技艺）
-- [福建省](/wiki/eastern/fujian/index)（5 项：南音、咏春拳、寿山石雕、德化瓷烧制技艺、武夷岩茶（大红袍）制作技艺）
-- [江西省](/wiki/eastern/jiangxi/index)（3 项：弋阳腔、景德镇手工制瓷技艺、夏布织造技艺）
+- [上海市](/wiki/eastern/shanghai/intro)（2 项：沪剧、顾绣）
+- [江苏省](/wiki/eastern/jiangsu/intro)（5 项：昆曲、苏州评弹、苏绣、南京云锦木机妆花手工织造技艺、宜兴紫砂陶制作技艺）
+- [浙江省](/wiki/eastern/zhejiang/intro)（3 项：越剧、东阳木雕、龙泉青瓷烧制技艺）
+- [安徽省](/wiki/eastern/anhui/intro)（3 项：黄梅戏、徽州三雕、宣纸制作技艺）
+- [福建省](/wiki/eastern/fujian/intro)（5 项：南音、咏春拳、寿山石雕、德化瓷烧制技艺、武夷岩茶（大红袍）制作技艺）
+- [江西省](/wiki/eastern/jiangxi/intro)（3 项：弋阳腔、景德镇手工制瓷技艺、夏布织造技艺）

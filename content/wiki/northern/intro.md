@@ -19,13 +19,13 @@ updatedAt: 2025-11-05
 
 ## 本区条目
 
-- [北京市](/wiki/northern/beijing/index)（5 项：京剧、京韵大鼓、北京绢花、景泰蓝制作技艺、同仁堂中医药文化）
-- [天津市](/wiki/northern/tianjin/index)（2 项：杨柳青木版年画、天津“风筝魏”风筝制作技艺）
-- [河北省](/wiki/northern/hebei/index)（4 项：河北梆子、吴桥杂技、蔚县剪纸、定瓷烧制技艺）
-- [山西省](/wiki/northern/shanxi/index)（3 项：左权开花调、晋剧、平遥推光漆器髹饰技艺）
-- [内蒙古自治区](/wiki/northern/neimenggu/index)（3 项：马头琴音乐、长调民歌、安代舞）
-- [辽宁省](/wiki/northern/liaoning/index)（2 项：海城喇叭戏、岫岩玉雕）
-- [吉林省](/wiki/northern/jilin/index)（2 项：朝鲜族农乐舞、松花石砚制作技艺）
-- [黑龙江省](/wiki/northern/heilongjiang/index)（2 项：赫哲族伊玛堪、桦树皮制作技艺）
-- [山东省](/wiki/northern/shandong/index)（4 项：柳子戏、山东快书、杨家埠木版年画、潍坊风筝制作技艺）
-- [河南省](/wiki/northern/henan/index)（4 项：豫剧、少林功夫、朱仙镇木版年画、钧瓷烧制技艺）
+- [北京市](/wiki/northern/beijing/intro)（5 项：京剧、京韵大鼓、北京绢花、景泰蓝制作技艺、同仁堂中医药文化）
+- [天津市](/wiki/northern/tianjin/intro)（2 项：杨柳青木版年画、天津“风筝魏”风筝制作技艺）
+- [河北省](/wiki/northern/hebei/intro)（4 项：河北梆子、吴桥杂技、蔚县剪纸、定瓷烧制技艺）
+- [山西省](/wiki/northern/shanxi/intro)（3 项：左权开花调、晋剧、平遥推光漆器髹饰技艺）
+- [内蒙古自治区](/wiki/northern/neimenggu/intro)（3 项：马头琴音乐、长调民歌、安代舞）
+- [辽宁省](/wiki/northern/liaoning/intro)（2 项：海城喇叭戏、岫岩玉雕）
+- [吉林省](/wiki/northern/jilin/intro)（2 项：朝鲜族农乐舞、松花石砚制作技艺）
+- [黑龙江省](/wiki/northern/heilongjiang/intro)（2 项：赫哲族伊玛堪、桦树皮制作技艺）
+- [山东省](/wiki/northern/shandong/intro)（4 项：柳子戏、山东快书、杨家埠木版年画、潍坊风筝制作技艺）
+- [河南省](/wiki/northern/henan/intro)（4 项：豫剧、少林功夫、朱仙镇木版年画、钧瓷烧制技艺）

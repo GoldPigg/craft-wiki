@@ -33,7 +33,7 @@ updatedAt: 2025-11-06
 
 ## 目录与命名约定
 
-- 省份索引：`content/wiki/<地区>/<省份>/index.md`，如 `content/wiki/northern/beijing/index.md`；
+- 省份介绍：`content/wiki/<地区>/<省份>/intro.md`，如 `content/wiki/northern/beijing/intro.md`；
 - 项目条目：`content/wiki/<地区>/<省份>/<门类>/<项目>.md`，如 `content/wiki/northern/beijing/craft/jingtailan.md`；
 - 门类目录：`folk-literature`、`traditional-music`、`traditional-dance`、`traditional-opera`、`quyi`、`acrobatics`、`fine-arts`、`craft`、`medicine`、`folk-custom`；
 - 配图：`public/images/<地区>/<省份>/<门类>/<项目>.jpg`（或 `.png`、`.svg`），页面通过 `/images/...` 引用。

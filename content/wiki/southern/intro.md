@@ -19,8 +19,8 @@ updatedAt: 2025-11-05
 
 ## 本区条目
 
-- [广东省](/wiki/southern/guangdong/index)（5 项：广东音乐、粤剧、广绣、端砚制作技艺、潮州工夫茶艺）
-- [广西壮族自治区](/wiki/southern/guangxi/index)（3 项：桂剧、侗族木构建筑营造技艺、壮族织锦技艺）
-- [海南省](/wiki/southern/hainan/index)（3 项：琼剧、黎族传统纺染织绣技艺、黎族船型屋营造技艺）
-- [湖南省](/wiki/southern/hunan/index)（4 项：花鼓戏、湘绣、浏阳花炮制作技艺、土家族织锦技艺）
-- [湖北省](/wiki/southern/hubei/index)（3 项：汉剧、楚式漆器髹饰技艺、端午节）
+- [广东省](/wiki/southern/guangdong/intro)（5 项：广东音乐、粤剧、广绣、端砚制作技艺、潮州工夫茶艺）
+- [广西壮族自治区](/wiki/southern/guangxi/intro)（3 项：桂剧、侗族木构建筑营造技艺、壮族织锦技艺）
+- [海南省](/wiki/southern/hainan/intro)（3 项：琼剧、黎族传统纺染织绣技艺、黎族船型屋营造技艺）
+- [湖南省](/wiki/southern/hunan/intro)（4 项：花鼓戏、湘绣、浏阳花炮制作技艺、土家族织锦技艺）
+- [湖北省](/wiki/southern/hubei/intro)（3 项：汉剧、楚式漆器髹饰技艺、端午节）
