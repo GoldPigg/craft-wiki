@@ -45,6 +45,10 @@ const subTitle = useText('Craft Wiki', 'ZhongQiZhiMang')
 
 <style scoped>
 section {
+    background-image: url("/image/home/welcomeBackground.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100dvh;
     width: 100dvw;
     display: flex;
@@ -53,6 +57,15 @@ section {
     flex-direction: column;
     position: relative;
     opacity: 0;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    width: 100%;
+    height: 100%;
+    filter: blur(20px);
 }
 
 #title {

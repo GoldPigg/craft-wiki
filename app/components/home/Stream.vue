@@ -20,9 +20,9 @@ const strokeDashoffset = computed(() => `${pathLength.value * (1 - (props.progre
 
 <template>
     <svg viewBox="0 0 100 100" height="200" width="200" preserveAspectRatio="none">
-        <path ref="path" :d="path" fill="none" stroke="#D6EFFA" :stroke-width="streamWidth * 0.4" opacity="0.85"
+        <path ref="path" :d="path" fill="none" stroke="#59cbd3" :stroke-width="streamWidth * 0.4" opacity="0.85"
             :stroke-dasharray="strokeDasharray" :stroke-dashoffset="strokeDashoffset" />
-        <path :d="path" fill="none" stroke="#A8D8F0" :stroke-width="streamWidth" opacity="0.35"
+        <path :d="path" fill="none" stroke="#59cbd3" :stroke-width="streamWidth" opacity="0.35"
             :stroke-dasharray="strokeDasharray" :stroke-dashoffset="strokeDashoffset" style="filter: blur(0.6px)" />
     </svg>
 </template>
