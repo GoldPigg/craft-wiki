@@ -150,6 +150,7 @@ useGsap(() => {
 <template>
     <div class="side-water" aria-hidden="true">
         <div class="side-water-inner">
+            <slot></slot>
             <svg class="water-svg" viewBox="0 0 2400 1000" preserveAspectRatio="none">
                 <defs>
                     <linearGradient id="water-body" x1="0" y1="0" x2="0" y2="1">
@@ -219,8 +220,6 @@ useGsap(() => {
     bottom: 0;
     width: 200%;
     height: 100%;
-    will-change: transform;
-    z-index: 0;
 }
 
 .side-water-inner {
