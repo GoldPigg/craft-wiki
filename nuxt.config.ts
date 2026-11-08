@@ -33,6 +33,7 @@ export default defineNuxtConfig({
       scrollTrigger: true,
       draggable: true,
       scrollTo: true,
+      motionPath: true,
     },
     clubPlugins: {
       splitText: true,
