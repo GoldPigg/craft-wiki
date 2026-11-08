@@ -114,7 +114,7 @@ watch(progress, (v) => {
         </div>
         <Teleport to="body" defer>
             <Stream v-show="isStreaming" :stream-width="2" :progress="streamProgress"
-                :style="{ position: 'fixed', top: y + 'px', left: x + 'px', height: '120dvh', width: '30dvw', zIndex: -1 }" />
+                :style="{ position: 'fixed', top: y + 'px', left: x + 'px', height: '60dvh', width: '30dvw', zIndex: 1 }" />
         </Teleport>
     </div>
 </template>
