@@ -42,9 +42,9 @@ const staticThemeConfig = {
     radiusFull: '50%',
 
     // 阴影
-    shadowSm: '0 1px 2px rgba(0, 0, 0, 0.05)',
-    shadowMd: '0 2px 8px rgba(0, 0, 0, 0.08)',
-    shadowLg: '0 4px 16px rgba(0, 0, 0, 0.10)',
+    shadowSm: '0 1px 2px rgba(0, 0, 0, 0.5)',
+    shadowMd: '0 2px 8px rgba(0, 0, 0, 0.8)',
+    shadowLg: '0 4px 16px rgba(0, 0, 0, 1)',
     shadowSeal:
         'inset 0 1px 0 rgba(255, 255, 255, 0.25), ' +
         'inset 0 -1px 0 rgba(0, 0, 0, 0.2), ' +
