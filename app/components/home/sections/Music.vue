@@ -46,7 +46,6 @@ const onStickClick = (stick: 'right' | 'left') => {
             st.scroll(st.start + pages.value * height.value)
         },
         onComplete() {
-            console.log(st.progress)
             if (st.progress <= 0 || st.progress >= 1) $ScrollSmoother.get()?.paused(false)
         }
     })

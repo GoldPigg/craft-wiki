@@ -95,10 +95,6 @@ useGsap(() => {
         },
     );
 
-    $gsap.to(['.water', '#highlightRef'], {
-        x: -waveLength, duration: 9, repeat: -1, ease: 'none',
-    });
-
     causticRefs.value?.forEach((el, i) => {
         $gsap.to(el, {
             x: () => $gsap.utils.random(-180, 180),
@@ -173,32 +169,20 @@ useGsap(() => {
                         <stop offset="40%" stop-color="#D6EFFA" stop-opacity="0.4" />
                         <stop offset="100%" stop-color="#D6EFFA" stop-opacity="0" />
                     </radialGradient>
-
-                    <filter id="surface-blur">
-                        <feGaussianBlur stdDeviation="2.5" />
-                    </filter>
-                    <filter id="caustic-blur">
-                        <feGaussianBlur stdDeviation="4" />
-                    </filter>
-
-                    <mask id="water-mask">
-                        <path :d="wavePath" id="waterMaskPath" fill="white" />
-                    </mask>
                 </defs>
 
                 <path class="water" fill="#66FFE6" stroke="#66FFE6" :d="wavePath"
                     style="z-index: -1; position: relative; opacity: 0.65;" />
                 <path class="water" fill="url(#water-body)" :d="wavePath" style="z-index: 0; position: relative;" />
 
-                <g mask="url(#water-mask)"
-                    style="mix-blend-mode: screen; filter: url(#caustic-blur); opacity: 0.75; position: relative;z-index: -2;">
+                <g style="mix-blend-mode: screen; opacity: 0.75; position: relative;z-index: -2;">
                     <ellipse v-for="i in 3" class="caustic" ref="causticRefs" :cx="300 * i"
                         :cy="Math.random() * 100 + 800" :rx="Math.random() * 50 + 150" :ry="Math.random() * 10 + 30"
                         fill="url(#caustic-glow)" />
                 </g>
 
-                <path :d="wavePath" id="highlightRef" fill="none" stroke="url(#surface-glow)" stroke-width="3.5"
-                    filter="url(#surface-blur)" style="mix-blend-mode: screen" opacity="0.85" />
+                <path :d="wavePath" id="highlightRef" fill="none" stroke="url(#surface-glow)"
+                    stroke-width="3.5" " style=" mix-blend-mode: screen" opacity="0.85" />
             </svg>
 
             <div class="bubbles" ref="bubblesContainer" id="bubbles"></div>
@@ -215,6 +199,7 @@ useGsap(() => {
     width: 100%;
     height: 100%;
     z-index: 1;
+    will-change: transform;
 }
 
 .water-svg {
