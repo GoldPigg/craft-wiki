@@ -188,9 +188,10 @@ useGsap(() => {
 
                 <path class="water" fill="#66FFE6" stroke="#66FFE6" :d="wavePath"
                     style="z-index: -1; position: relative; opacity: 0.65;" />
-                <path class="water" fill="url(#water-body)" :d="wavePath" style="z-index: 1; position: relative;" />
+                <path class="water" fill="url(#water-body)" :d="wavePath" style="z-index: 0; position: relative;" />
 
-                <g mask="url(#water-mask)" style="mix-blend-mode: screen; filter: url(#caustic-blur); opacity: 0.75; position: relative;z-index: -2;">
+                <g mask="url(#water-mask)"
+                    style="mix-blend-mode: screen; filter: url(#caustic-blur); opacity: 0.75; position: relative;z-index: -2;">
                     <ellipse v-for="i in 3" class="caustic" ref="causticRefs" :cx="300 * i"
                         :cy="Math.random() * 100 + 800" :rx="Math.random() * 50 + 150" :ry="Math.random() * 10 + 30"
                         fill="url(#caustic-glow)" />
@@ -207,11 +208,13 @@ useGsap(() => {
 
 <style scoped>
 .side-water {
+    pointer-events: none;
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
 
 .water-svg {
