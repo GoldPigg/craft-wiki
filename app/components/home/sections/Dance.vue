@@ -31,7 +31,7 @@ useGsap(() => {
             trigger: '.section-2',
             start: 'top bottom',
             end: 'bottom bottom',
-            scrub: 1,
+            scrub: 2,
             invalidateOnRefresh: true,
         }
     }
@@ -132,6 +132,10 @@ section {
     align-items: center;
     flex-direction: column;
     position: relative;
+}
+
+.luoshen {
+    will-change: translate;
 }
 
 .chevron-button {
