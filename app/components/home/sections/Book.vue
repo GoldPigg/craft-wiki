@@ -7,6 +7,7 @@ const { height } = useWindowSize()
 const scrollHangingContainerRef = useTemplateRef<HTMLDivElement>('scrollHangingContainer')
 const sectionRef = useTemplateRef<HTMLDivElement>('section')
 const rodRef = useTemplateRef<typeof Rod>('rod')
+const imagesRef = useTemplateRef<HTMLDivElement[]>('images')
 
 onMounted(() => {
     const scrollHangingContent = scrollHangingContainerRef.value
@@ -39,6 +40,25 @@ useGsap(() => {
             height: scrollHeight,
         })
     })
+
+    imagesRef.value?.forEach((e, i) => {
+        $gsap.fromTo(e,
+            {
+                x: 100 * (i % 2 ? -1 : 1),
+                opacity: 0,
+            },
+            {
+                x: 0,
+                opacity: 1,
+                scrollTrigger: {
+                    trigger: e,
+                    start: 'top bottom',
+                    end: `+=${height.value / 2}`,
+                    scrub: true
+                },
+            }
+        )
+    })
 })
 </script>
 
@@ -48,7 +68,10 @@ useGsap(() => {
         <div class="scroll-hanging-container" ref="scrollHangingContainer">
             <div class="mount-top"></div>
             <div class="scroll-hanging-content">
-                <p v-for="i in 50">{{ i }}</p>
+                <div v-for="i in 9" ref="images" class="image-container"
+                    :style="{ justifyContent: i % 2 === 0 ? 'end' : 'start' }">
+                    <img :src="`image/home/book/${i - 1}.jpg`" />
+                </div>
             </div>
             <div class="mount-bottom"></div>
         </div>
@@ -74,14 +97,31 @@ section {
     background: #F7F3EC;
     border-left: 1px solid #d9cdbb;
     border-right: 1px solid #d9cdbb;
-    padding: 56px 40px;
-    gap: 28px;
-    min-height: 360px;
     position: relative;
+    width: 100%;
+    padding: 10%;
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    height: 100%;
+    width: 60%;
+    object-position: center;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
 .mount-top {
     height: 64px;
+    width: 100%;
     background: linear-gradient(180deg, #c9b896 0%, #b8a67f 100%);
     border-left: 1px solid #a89570;
     border-right: 1px solid #a89570;
@@ -90,6 +130,7 @@ section {
 
 .mount-bottom {
     height: 44px;
+    width: 100%;
     background: linear-gradient(180deg, #b8a67f 0%, #c9b896 100%);
     border-left: 1px solid #a89570;
     border-right: 1px solid #a89570;
