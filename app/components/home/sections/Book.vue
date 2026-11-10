@@ -70,7 +70,7 @@ useGsap(() => {
             <div class="scroll-hanging-content">
                 <div v-for="i in 9" ref="images" class="image-container"
                     :style="{ justifyContent: i % 2 === 0 ? 'end' : 'start' }">
-                    <img :src="`image/home/book/${i - 1}.jpg`" />
+                    <img draggable="false" :src="`image/home/book/${i - 1}.jpg`" />
                 </div>
             </div>
             <div class="mount-bottom"></div>

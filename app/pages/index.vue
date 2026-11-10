@@ -22,11 +22,11 @@ useGsap(async () => {
 
 <template>
     <div id="smooth-wrapper">
-        <div id="smooth-content" style="user-select: none;will-change: 'transform';">
+        <div id="smooth-content" style="user-select: none;will-change: 'transform';background-color: #FDF2F0;">
             <Welcome class="section-1" />
             <Dance class="section-2" />
             <Book class="section-3" />
-            <Music class="section-4"/>
+            <Music class="section-4" />
             <WuLong class="section-5" />
         </div>
     </div>
