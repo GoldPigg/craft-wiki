@@ -1,16 +1,16 @@
 .prose .anchor {
-    margin-left: 0.5em;
-    text-decoration: none;
-    opacity: 0;
-    transition: opacity 0.15s;
+  margin-left: 0.5em;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.15s;
 }
 
 .prose :where(h1, h2, h3, h4, h5, h6):hover .anchor {
-    opacity: 1;
+  opacity: 1;
 }
 
 .prose .anchor:hover {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 /* ============================================================
@@ -34,7 +34,7 @@
 }
 
 /* 段落与块级元素之间的垂直节奏 */
-.prose > * + * {
+.prose>*+* {
   margin-top: 1em;
 }
 
@@ -94,7 +94,7 @@
 }
 
 /* 标题后的第一个元素不要额外顶开 */
-.prose :where(h1, h2, h3, h4, h5, h6) + * {
+.prose :where(h1, h2, h3, h4, h5, h6)+* {
   margin-top: 0;
 }
 
@@ -142,6 +142,7 @@
  * ------------------------------------------------------------ */
 .prose p {
   margin-block: 1em;
+  position: relative;
 }
 
 .prose strong {
@@ -205,12 +206,12 @@
   margin-block: 1em;
 }
 
-.prose li + li {
+.prose li+li {
   margin-top: 0.35em;
 }
 
-.prose li > ul,
-.prose li > ol {
+.prose li>ul,
+.prose li>ol {
   margin-top: 0.35em;
 }
 
@@ -238,7 +239,7 @@
   list-style: lower-roman;
 }
 
-.prose li > p {
+.prose li>p {
   margin-block: 0.25em;
 }
 
@@ -262,11 +263,11 @@
   flex-shrink: 0;
 }
 
-.prose li.task-list-item > label {
+.prose li.task-list-item>label {
   flex: 1;
 }
 
-.prose li.task-list-item.completed > label {
+.prose li.task-list-item.completed>label {
   color: var(--color-text-muted);
   text-decoration: line-through;
 }
@@ -282,7 +283,7 @@
   font-style: normal;
 }
 
-.prose blockquote > * + * {
+.prose blockquote>*+* {
   margin-top: 0.75em;
 }
 
@@ -304,7 +305,7 @@
  * ------------------------------------------------------------ */
 
 /* 行内代码 */
-.prose :not(pre) > code {
+.prose :not(pre)>code {
   font-family: var(--font-mono);
   font-size: 0.875em;
   padding: 0.15em 0.4em;
@@ -342,9 +343,11 @@
 .prose pre::-webkit-scrollbar {
   height: 8px;
 }
+
 .prose pre::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .prose pre::-webkit-scrollbar-thumb {
   background: var(--color-border-strong);
   border-radius: var(--radius-sm);
@@ -588,7 +591,7 @@
 /* ------------------------------------------------------------
  * 暗色微调（仅处理语义变量无法覆盖的细节）
  * ------------------------------------------------------------ */
-[data-theme='dark'] .prose :not(pre) > code {
+[data-theme='dark'] .prose :not(pre)>code {
   color: var(--color-text-primary);
   background: var(--color-surface);
 }
