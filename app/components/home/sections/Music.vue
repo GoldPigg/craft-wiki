@@ -6,8 +6,7 @@ const { height } = useWindowSize()
 const sectionRef = useTemplateRef<HTMLDivElement>('section')
 const contentRef = useTemplateRef<HTMLDivElement>('content')
 
-
-const pages = ref(0)
+const imageIndex = ref(0)
 let st: ScrollTrigger
 
 useGsap(() => {
@@ -22,14 +21,15 @@ useGsap(() => {
         invalidateOnRefresh: true,
         anticipatePin: 1,
         animation: $gsap.to(contentRef.value, {
+            ease: 'none',
             y: -scrollLength
         }),
         async onEnter(self) {
-            pages.value = 0
+            imageIndex.value = 0
             self.scroll(self.start)
         },
         async onEnterBack(self) {
-            pages.value = 1
+            imageIndex.value = imageCount - 1
             self.scroll(self.end)
         },
         onToggle(self) {
@@ -37,15 +37,44 @@ useGsap(() => {
         },
     })
 })
+
+const imagesRef = useTemplateRef<HTMLDivElement[]>('images')
+const imageCount = 4
 const onStickClick = (stick: 'right' | 'left') => {
-    $gsap.to(pages, {
-        value: stick === 'right' ? "+=1" : "-=1",
+    // if (imageIndex.value <= 0 || imageIndex.value >= imageCount) return
+    if (stick === 'left') imageIndex.value--
+    else imageIndex.value++
+
+    let to = 0
+    if (imageIndex.value < 0) {
+        to = st.start - window.innerHeight
+    }
+    else if (imageIndex.value >= imageCount) {
+        to = st.end + window.innerHeight
+    } 
+    else {
+        if (!imagesRef.value) return
+        const e = imagesRef.value[imageIndex.value]
+        if (!e) return
+        if (imageIndex.value === 0) to = st.start
+        else if (imageIndex.value === imageCount - 1) to = st.end
+        else {
+            const rect = e.getBoundingClientRect()
+            to = st.scroll() + rect.top
+        }
+    }
+
+    const tmp = { v: st.scroll() }
+    const index = imageIndex.value
+    $gsap.to(tmp, {
+        v: to,
         duration: 0.5,
         ease: 'power2.inOut',
         onUpdate() {
-            st.scroll(st.start + pages.value * height.value)
+            st.scroll(tmp.v)
         },
         onComplete() {
+            imageIndex.value = index
             if (st.progress <= 0 || st.progress >= 1) $ScrollSmoother.get()?.paused(false)
         }
     })
@@ -57,7 +86,10 @@ const onStickClick = (stick: 'right' | 'left') => {
 <template>
     <section ref="section">
         <div class="content" ref="content">
-            <p v-for="i in 50">{{ i }}</p>
+            <div v-for="i in imageCount" ref="images" class="image-container"
+                :style="{ left: i % 2 === 0 ? ' 10%' : 0 }">
+                <img :src="`image/home/music/${i - 1}.jpg`" />
+            </div>
         </div>
         <Drum height="40dvh" @click-stick="onStickClick" style="position: absolute; right: 5dvw; bottom: 10dvh;" />
     </section>
@@ -69,6 +101,25 @@ section {
     width: 100dvw;
     position: relative;
     overflow: hidden;
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin: 20px;
+    position: relative;
+}
+
+.image-container img {
+    height: 100%;
+    width: 60%;
+    object-position: center;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
 .content {
