@@ -92,7 +92,7 @@ watch(model, (v) => {
     <section ref='section'>
         <div class="scroll-container" ref="scroll-container">
             <div v-for="i in imageCount" ref="images" class="image-container">
-                <img :src="`image/home/wulong/${i - 1}.png`" />
+                <img draggable="false" :src="`image/home/wulong/${i - 1}.png`" />
             </div>
         </div>
         <WuLong height="20dvh" v-model="model" v-model:dragged="dragged" style="position: absolute; bottom: 5%;" />
@@ -104,6 +104,21 @@ section {
     height: 100dvh;
     width: 100dvw;
     position: relative;
+    background-image: url("/image/home/wulong/wulong-background.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+section::before {
+    content: "";
+    display: block;
+    position: absolute;
+    background: inherit;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(2px);
 }
 
 .scroll-container {
@@ -116,6 +131,7 @@ section {
 }
 
 .image-container {
+    width: 100%;
     aspect-ratio: 1;
     display: flex;
     flex-direction: row;
@@ -132,6 +148,8 @@ section {
 }
 
 .image-container img {
+    height: 100%;
+    width: 60%;
     object-position: center;
     object-fit: contain;
     border-radius: 10px;

@@ -51,7 +51,7 @@ const onStickClick = (stick: 'right' | 'left') => {
     }
     else if (imageIndex.value >= imageCount) {
         to = st.end + window.innerHeight
-    } 
+    }
     else {
         if (!imagesRef.value) return
         const e = imagesRef.value[imageIndex.value]
@@ -88,19 +88,36 @@ const onStickClick = (stick: 'right' | 'left') => {
         <div class="content" ref="content">
             <div v-for="i in imageCount" ref="images" class="image-container"
                 :style="{ left: i % 2 === 0 ? ' 10%' : 0 }">
-                <img :src="`image/home/music/${i - 1}.jpg`" />
+                <img draggable="false" :src="`image/home/music/${i - 1}.jpg`" />
             </div>
         </div>
         <Drum height="40dvh" @click-stick="onStickClick" style="position: absolute; right: 5dvw; bottom: 10dvh;" />
     </section>
 </template>
 
-<style>
+<style scoped>
 section {
     height: 100dvh;
     width: 100dvw;
     position: relative;
     overflow: hidden;
+    /* background: linear-gradient(135deg, #C0392B 0%, #D4A017 100%); */
+    /* background: radial-gradient(circle at 30% 30%, #C0392B 0%, #2C3E7A 100%); */
+    /* background-color: #FDF2F0; */
+    /* background-image: url("/image/home/music/music-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+}
+
+section::before {
+    content: "";
+    display: block;
+    position: absolute;
+    background: inherit;
+    width: 100%;
+    height: 100%;
+    filter: blur(30px);
 }
 
 .image-container {

@@ -21,7 +21,6 @@ body {
   user-select: none;
 }
 
-/* 新主题从点击位置圆形扩散 */
 ::view-transition-new(root) {
   clip-path: url(#piying-seal-clip);
 }
