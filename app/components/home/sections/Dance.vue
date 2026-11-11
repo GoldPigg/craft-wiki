@@ -41,7 +41,7 @@ useGsap(() => {
 const imageIndex = ref(0)
 const imagePath = (i: number) => `/image/home/dance/${i}.jpg`
 const imageRef = useTemplateRef<HTMLDivElement>('image')
-const imageCount = 4
+const imageCount = 6
 
 
 const nextImage = () => {
