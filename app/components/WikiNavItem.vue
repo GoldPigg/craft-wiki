@@ -217,6 +217,25 @@ function onToggle(e: MouseEvent) {
   transform: scaleY(0.95);
 }
 
+/* ---------- 移动端抽屉内：加大触控目标 ---------- */
+@media (max-width: 1023px) {
+
+  .wiki-nav-link,
+  .wiki-nav-group {
+    min-height: 2.75rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    font-size: 0.9375rem;
+  }
+
+  .wiki-nav-item--depth2 .wiki-nav-link,
+  .wiki-nav-item--depth2 .wiki-nav-group,
+  .wiki-nav-item--depth3 .wiki-nav-link,
+  .wiki-nav-item--depth3 .wiki-nav-group {
+    font-size: 0.875rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
   .wiki-nav-link,

@@ -59,6 +59,12 @@ const wikiTree = inject(wikiTreeKey)
     margin-top: var(--space8);
 }
 
+@media (max-width: 1023px) {
+    .md-main {
+        margin-top: 0;
+    }
+}
+
 .md-main--inner {
     display: flex;
     justify-content: center;
