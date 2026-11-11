@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { isCompactViewport } from '~/utils/viewport'
+
 const props = defineProps<{
     height: string,
 }>()
@@ -20,6 +22,8 @@ watch(model, (v) => {
 }, { deep: true })
 
 useGsap(() => {
+    if (isCompactViewport()) return
+
     $gsap.to('.dragon-part', {
         y: '20%',
         duration: 0.3,
@@ -64,14 +68,14 @@ useGsap(() => {
 <template>
     <div :style="{ height: height }" class="wulong">
         <div class="dragon">
-            <img class="dragon-part" draggable="false" src="../../assets/svg/dragon-tail.svg" />
-            <img v-for="i in 7" class="dragon-part" draggable="false"
-                src="../../assets/svg/dragon-body.svg" />
-            <img class="dragon-part" draggable="false" src="../../assets/svg/dragon-head.svg" />
+            <img class="dragon-part" draggable="false" loading="lazy" src="../../assets/svg/dragon-tail.svg" alt="" />
+            <img v-for="i in 7" :key="i" class="dragon-part" draggable="false" loading="lazy"
+                src="../../assets/svg/dragon-body.svg" alt="" />
+            <img class="dragon-part" draggable="false" loading="lazy" src="../../assets/svg/dragon-head.svg" alt="" />
         </div>
         <div class="dragon-ball-container" ref="dragon-ball-container">
-            <img class="dragon-ball" ref="dragon-ball" draggable="false"
-                src="../../assets/svg/dragon-ball.svg" />
+            <img class="dragon-ball" ref="dragon-ball" draggable="false" loading="lazy"
+                src="../../assets/svg/dragon-ball.svg" alt="" />
         </div>
     </div>
 </template>
