@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FloatingButton from '~/components/FloatingButton.vue';
 import Book from '~/components/home/sections/Book.vue';
 import Dance from '~/components/home/sections/Dance.vue';
 import Music from '~/components/home/sections/Music.vue';
@@ -21,6 +22,9 @@ useGsap(async () => {
 </script>
 
 <template>
+    <FloatingButton to="/wiki/intro/about" style="position: fixed; top: 10px;">
+        进入wiki
+    </FloatingButton>
     <div id="smooth-wrapper">
         <div id="smooth-content" style="user-select: none;will-change: 'transform';background-color: #FDF2F0;">
             <Welcome class="section-1" />
