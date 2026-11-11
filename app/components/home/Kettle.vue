@@ -28,6 +28,9 @@ const updatePoint = () => {
     x.value = nx, y.value = ny
 }
 
+const showArrow = ref(true)
+let isStreaming = ref(false)
+
 useGsap(() => {
     $Draggable.create('.kettle-inner', {
         type: 'y',
@@ -37,12 +40,18 @@ useGsap(() => {
         edgeResistance: 0.99,
         overshootTolerance: 0,
         bounds: { minY: -maxY, maxY: 0 },
+        onDragStart() {
+            showArrow.value = false
+        },
         onDrag: function () {
             progress.value = -this.y / maxY
         },
         onThrowUpdate() {
             progress.value = -this.y / maxY
         },
+        onThrowComplete() {
+            if (!isStreaming.value) showArrow.value = true
+        }
     })
 
     fireChildsRef.value?.forEach((v) => $gsap.to(v, {
@@ -77,13 +86,13 @@ onMounted(() => {
 })
 
 const streamProgress = ref(0)
-let isStreaming = ref(false)
 watch(progress, (v) => {
     if (!isStreaming.value && v > 0.95) {
         isStreaming.value = true
         $gsap.timeline({
             onComplete() {
                 isStreaming.value = false
+                showArrow.value = true
             }
         }).fromTo(streamProgress, { value: 0, duration: 0.4 }, { value: 0.5 })
             .to(streamProgress, { delay: 0.5, value: 1 })
@@ -107,6 +116,7 @@ watch(progress, (v) => {
 <template>
     <div :style="{ height: height }" class="kettle-container">
         <div class="kettle-inner">
+            <Arrow v-show="showArrow" style="position: absolute; bottom: 105%; left: 6%;" />
             <Kettle ref="kettle" class="kettle" draggable="false" />
         </div>
         <div class="fire">
