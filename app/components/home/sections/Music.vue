@@ -5,6 +5,7 @@ const { $gsap, $ScrollTrigger, $ScrollSmoother } = useNuxtApp()
 const { height } = useWindowSize()
 const sectionRef = useTemplateRef<HTMLDivElement>('section')
 const contentRef = useTemplateRef<HTMLDivElement>('content')
+const drumRef = useTemplateRef<typeof Drum>('drum')
 
 const imageIndex = ref(0)
 let st: ScrollTrigger
@@ -36,10 +37,40 @@ useGsap(() => {
             if (self.isActive) $ScrollSmoother.get()?.paused(true)
         },
     })
+
+    if (!drumRef.value) return
+
+    $ScrollTrigger.create({
+        trigger: sectionRef.value,
+        start: '101% bottom',
+        toggleActions: "play none none reverse",
+        invalidateOnRefresh: true,
+        animation: $gsap.fromTo(drumRef.value.$el, {
+            opacity: 1,
+            x: 0,
+        }, {
+            opacity: 0,
+            x: 100,
+        })
+    })
+
+    $ScrollTrigger.create({
+        trigger: sectionRef.value,
+        start: 'top 1%',
+        toggleActions: "play none none reverse",
+        invalidateOnRefresh: true,
+        animation: $gsap.fromTo(drumRef.value.$el, {
+            opacity: 0,
+            x: 100,
+        }, {
+            opacity: 1,
+            x: 0,
+        })
+    })
 })
 
 const imagesRef = useTemplateRef<HTMLDivElement[]>('images')
-const imageCount = 4
+const imageCount = 8
 const onStickClick = (stick: 'right' | 'left') => {
     if (imageIndex.value < 0 || imageIndex.value >= imageCount) return
     if (stick === 'left') imageIndex.value--
@@ -91,7 +122,8 @@ const onStickClick = (stick: 'right' | 'left') => {
                 <img draggable="false" :src="`image/home/music/${i - 1}.jpg`" />
             </div>
         </div>
-        <Drum height="40dvh" @click-stick="onStickClick" style="position: absolute; right: 5dvw; bottom: 10dvh;" />
+        <Drum ref="drum" height="40dvh" @click-stick="onStickClick"
+            style="position: absolute; right: 5dvw; bottom: 10dvh;" />
     </section>
 </template>
 
@@ -119,9 +151,9 @@ section::before {
     flex-direction: row;
     align-items: center;
     overflow: hidden;
-    margin-bottom: 20px;
     margin: 20px;
     position: relative;
+    max-height: 80dvh;
 }
 
 .image-container img {
@@ -133,6 +165,6 @@ section::before {
 }
 
 .content {
-    height: 200dvh;
+    padding: 10px;
 }
 </style>
