@@ -119,7 +119,7 @@ const onStickClick = (stick: 'right' | 'left') => {
         <div class="content" ref="content">
             <div v-for="i in imageCount" ref="images" class="image-container"
                 :style="{ left: i % 2 === 0 ? ' 10%' : 0 }">
-                <img draggable="false" :src="`image/home/music/${i - 1}.jpg`" />
+                <NuxtImg draggable="false" :src="`image/home/music/${i - 1}.jpg`" />
             </div>
         </div>
         <Drum ref="drum" height="40dvh" @click-stick="onStickClick"
