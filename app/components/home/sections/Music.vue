@@ -41,7 +41,7 @@ useGsap(() => {
 const imagesRef = useTemplateRef<HTMLDivElement[]>('images')
 const imageCount = 4
 const onStickClick = (stick: 'right' | 'left') => {
-    // if (imageIndex.value <= 0 || imageIndex.value >= imageCount) return
+    if (imageIndex.value < 0 || imageIndex.value >= imageCount) return
     if (stick === 'left') imageIndex.value--
     else imageIndex.value++
 
@@ -101,13 +101,6 @@ section {
     width: 100dvw;
     position: relative;
     overflow: hidden;
-    /* background: linear-gradient(135deg, #C0392B 0%, #D4A017 100%); */
-    /* background: radial-gradient(circle at 30% 30%, #C0392B 0%, #2C3E7A 100%); */
-    /* background-color: #FDF2F0; */
-    /* background-image: url("/image/home/music/music-background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
 }
 
 section::before {
