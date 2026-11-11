@@ -9,7 +9,7 @@ const contentRef = useTemplateRef<HTMLDivElement>('content')
 const drumRef = useTemplateRef<typeof Drum>('drum')
 
 const imageIndex = ref(0)
-let st: ScrollTrigger | null = null
+let st: ScrollTrigger
 
 useGsap(() => {
     // 手机/平板：不使用 pin/纵向滚动驱动，图片改为横向滑动
@@ -77,41 +77,40 @@ const imageCount = 8
 const onStickClick = (stick: 'right' | 'left') => {
     if (!st || isCompactViewport()) return
     if (imageIndex.value < 0 || imageIndex.value >= imageCount) return
-    const trigger = st
     if (stick === 'left') imageIndex.value--
     else imageIndex.value++
 
     let to = 0
     if (imageIndex.value < 0) {
-        to = trigger.start - window.innerHeight
+        to = st.start - window.innerHeight
     }
     else if (imageIndex.value >= imageCount) {
-        to = trigger.end + window.innerHeight
+        to = st.end + window.innerHeight
     }
     else {
         if (!imagesRef.value) return
         const e = imagesRef.value[imageIndex.value]
         if (!e) return
-        if (imageIndex.value === 0) to = trigger.start
-        else if (imageIndex.value === imageCount - 1) to = trigger.end
+        if (imageIndex.value === 0) to = st.start
+        else if (imageIndex.value === imageCount - 1) to = st.end
         else {
             const rect = e.getBoundingClientRect()
-            to = trigger.scroll() + rect.top
+            to = st.scroll() + rect.top
         }
     }
 
-    const tmp = { v: trigger.scroll() }
+    const tmp = { v: st.scroll() }
     const index = imageIndex.value
     $gsap.to(tmp, {
         v: to,
         duration: 0.5,
         ease: 'power2.inOut',
         onUpdate() {
-            trigger.scroll(tmp.v)
+            st.scroll(tmp.v)
         },
         onComplete() {
             imageIndex.value = index
-            if (trigger.progress <= 0 || trigger.progress >= 1) $ScrollSmoother.get()?.paused(false)
+            if (st.progress <= 0 || st.progress >= 1) $ScrollSmoother.get()?.paused(false)
         }
     })
 }
@@ -122,13 +121,14 @@ const onStickClick = (stick: 'right' | 'left') => {
 <template>
     <section ref="section">
         <div class="content" ref="content" data-reveal>
-            <div v-for="i in imageCount" :key="i" ref="images" class="image-container"
-                :class="{ 'image-container--offset': i % 2 === 0 }">
-                <NuxtImg draggable="false" loading="lazy" decoding="async" :src="`image/home/music/${i - 1}.jpg`"
-                    :alt="`乐舞图片 ${i}`" />
+            <div v-for="i in imageCount" :key="i" ref="images" class="image-container">
+                <div :style="{ left: i % 2 === 0 ? ' 10%' : 0 }">
+                    <NuxtImg draggable=" false" decoding="async" :src="`image/home/music/${i - 1}.jpg`"
+                        :alt="`乐舞图片 ${i}`" />
+                </div>
             </div>
         </div>
-        <Drum ref="drum" class="music-drum" height="40dvh" @click-stick="onStickClick"
+        <Drum v-if="!isCompactViewport()" ref="drum" class="music-drum" height="40dvh" @click-stick="onStickClick"
             style="position: absolute; right: 5dvw; bottom: 10dvh;" />
     </section>
 </template>
@@ -162,6 +162,12 @@ section::before {
     max-height: 80dvh;
 }
 
+.image-container div {
+    height: 100%;
+    width: 60%;
+    position: relative;
+}
+
 .image-container img {
     height: 100%;
     width: 60%;
@@ -172,84 +178,5 @@ section::before {
 
 .content {
     padding: 10px;
-}
-
-.mobile-gallery-hint {
-    display: none;
-}
-
-@media (min-width: 1024px) {
-    .image-container--offset {
-        left: 10%;
-    }
-}
-
-/* ---------- 移动端：横向滑动画廊，取消 pin / 鼓点滚动 ---------- */
-@media (max-width: 1023px) {
-    section {
-        height: auto;
-        min-height: 100vh;
-        min-height: 100svh;
-        padding: 4rem 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    section::before {
-        display: none;
-    }
-
-    .content {
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        width: 100%;
-        height: auto;
-        gap: 1rem;
-        padding: 1rem max(1rem, env(safe-area-inset-right, 0px)) 1rem max(1rem, env(safe-area-inset-left, 0px));
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .content::-webkit-scrollbar {
-        display: none;
-    }
-
-    .image-container {
-        flex: 0 0 min(82vw, 30rem);
-        width: min(82vw, 30rem);
-        max-height: none;
-        margin: 0;
-        left: auto;
-        scroll-snap-align: center;
-    }
-
-    .image-container img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 4 / 3;
-        object-fit: cover;
-        border-radius: 1rem;
-    }
-
-    .music-drum {
-        display: none;
-    }
-
-    .mobile-gallery-hint {
-        display: block;
-        margin: 1.25rem var(--space4) 0;
-        font-family: var(--font-ui);
-        font-size: 0.75rem;
-        letter-spacing: 0.14em;
-        color: var(--color-text-muted);
-        text-align: center;
-    }
 }
 </style>
