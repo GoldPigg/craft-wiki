@@ -51,7 +51,6 @@ useGsap(() => {
             trigger: section,
             start: 'top 80%',
             end: "+=20%",
-            // pin: true,
             scrub: 1,
             invalidateOnRefresh: true,
             anticipatePin: 1,
