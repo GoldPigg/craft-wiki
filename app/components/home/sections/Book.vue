@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Rod from '../Rod.vue';
+import { isCompactViewport } from '~/utils/viewport';
 
 const { $ScrollTrigger, $gsap } = useNuxtApp()
 const { height } = useWindowSize()
@@ -9,7 +10,22 @@ const sectionRef = useTemplateRef<HTMLDivElement>('section')
 const rodRef = useTemplateRef<typeof Rod>('rod')
 const imagesRef = useTemplateRef<HTMLDivElement[]>('images')
 
+// 保留原始宽高，交给浏览器提前占位，避免懒加载图片造成布局跳动
+const bookImages = [
+    { file: '0.jpg', width: 1440, height: 1080 },
+    { file: '1.jpg', width: 2826, height: 768 },
+    { file: '2.jpg', width: 2048, height: 1449 },
+    { file: '3.jpg', width: 2048, height: 1440 },
+    { file: '4.jpg', width: 1200, height: 1803 },
+    { file: '5.jpg', width: 1600, height: 1067 },
+    { file: '6.jpg', width: 1258, height: 500 },
+    { file: '7.jpg', width: 2000, height: 1930 },
+    { file: '8.jpg', width: 3024, height: 3807 },
+]
+
 onMounted(() => {
+    if (isCompactViewport()) return
+
     const scrollHangingContent = scrollHangingContainerRef.value
     if (!scrollHangingContent) return
     const scrollHeight = scrollHangingContent?.scrollHeight
@@ -18,6 +34,8 @@ onMounted(() => {
 })
 
 useGsap(() => {
+    if (isCompactViewport()) return
+
     const scrollHangingContent = scrollHangingContainerRef.value
     if (!scrollHangingContent) return
     const scrollHeight = scrollHangingContent?.scrollHeight
@@ -68,9 +86,10 @@ useGsap(() => {
         <div class="scroll-hanging-container" ref="scrollHangingContainer">
             <div class="mount-top"></div>
             <div class="scroll-hanging-content">
-                <div v-for="i in 9" ref="images" class="image-container"
-                    :style="{ justifyContent: i % 2 === 0 ? 'end' : 'start' }">
-                    <NuxtImg draggable="false" :src="`image/home/book/${i - 1}.jpg`" />
+                <div v-for="(img, index) in bookImages" :key="img.file" ref="images" class="image-container"
+                    data-reveal :style="{ justifyContent: index % 2 === 0 ? 'start' : 'end' }">
+                    <NuxtImg draggable="false" loading="lazy" decoding="async" :src="`image/home/book/${img.file}`"
+                        :width="img.width" :height="img.height" :alt="`书页图片 ${index + 1}`" />
                 </div>
             </div>
             <div class="mount-bottom"></div>
@@ -83,7 +102,7 @@ useGsap(() => {
 section {
     min-height: 100dvh;
     height: max-content;
-    width: 100dvw;
+    width: 100%;
     position: relative;
 }
 
@@ -179,5 +198,40 @@ section {
 
 .rod-bottom::after {
     right: -20px;
+}
+
+/* ---------- 移动端：静态展开的卷轴 ---------- */
+@media (max-width: 1023px) {
+    section {
+        min-height: 0;
+        height: auto;
+    }
+
+    .scroll-hanging-container {
+        height: auto;
+    }
+
+    .scroll-hanging-content {
+        padding: 6% 5%;
+    }
+
+    .image-container {
+        margin-bottom: var(--space4);
+    }
+
+    .image-container img {
+        width: min(76%, 20rem);
+        height: auto;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+
+    .mount-top {
+        height: 40px;
+    }
+
+    .mount-bottom {
+        height: 28px;
+    }
 }
 </style>

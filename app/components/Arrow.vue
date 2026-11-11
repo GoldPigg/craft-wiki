@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { isCompactViewport } from '~/utils/viewport'
 
 type Direction = 'left' | 'up' | 'down' | 'right'
 type Type = 'move' | 'click'
@@ -21,6 +22,8 @@ const { $gsap } = useNuxtApp()
 const arrowRef = useTemplateRef<SVGElement>('arrow')
 
 useGsap(() => {
+    if (isCompactViewport()) return
+
     if (props.type === 'move') {
         const tl = $gsap.timeline({
             repeat: -1,

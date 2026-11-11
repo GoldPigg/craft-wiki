@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Kettle from '../shapes/Kettle.vue';
 import Stream from './Stream.vue';
+import { isCompactViewport } from '~/utils/viewport';
 
 const props = defineProps<{
     height: string
@@ -32,6 +33,8 @@ const showArrow = ref(true)
 let isStreaming = ref(false)
 
 useGsap(() => {
+    if (isCompactViewport()) return
+
     $Draggable.create('.kettle-inner', {
         type: 'y',
         inertia: true,
@@ -81,8 +84,13 @@ useGsap(() => {
 })
 
 onMounted(() => {
+    if (isCompactViewport()) return
     updatePoint()
     window.addEventListener('resize', updatePoint)
+})
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', updatePoint)
 })
 
 const streamProgress = ref(0)
@@ -116,7 +124,7 @@ watch(progress, (v) => {
 <template>
     <div :style="{ height: height }" class="kettle-container">
         <div class="kettle-inner">
-            <Arrow v-show="showArrow" style="position: absolute; bottom: 105%; left: 6%;" />
+            <Arrow v-show="showArrow" class="kettle-arrow" style="position: absolute; bottom: 105%; left: 6%;" />
             <Kettle ref="kettle" class="kettle" draggable="false" />
         </div>
         <div class="fire">
@@ -163,5 +171,32 @@ img {
     background: radial-gradient(orangered 20%,
             rgba(255, 69, 0, 0) 70%);
     mix-blend-mode: screen;
+}
+
+/* ---------- 移动端：静态水壶，不做拖拽/火焰/蒸汽 ---------- */
+@media (max-width: 1023px) {
+    .fire {
+        display: none;
+    }
+
+    .kettle-inner {
+        height: 100%;
+    }
+
+    .kettle-arrow {
+        display: none;
+    }
+
+    .kettle-container::after {
+        content: '';
+        position: absolute;
+        left: 4%;
+        bottom: -2%;
+        width: 52%;
+        height: 14%;
+        background: radial-gradient(ellipse at center, rgba(255, 150, 30, 0.45), transparent 70%);
+        filter: blur(8px);
+        pointer-events: none;
+    }
 }
 </style>

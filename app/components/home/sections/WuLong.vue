@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import WuLong from '../WuLong.vue';
+import { isCompactViewport } from '~/utils/viewport';
 
 const { $gsap, $ScrollTrigger, $ScrollSmoother } = useNuxtApp()
 
@@ -13,6 +14,9 @@ let st: ScrollTrigger | null = null
 
 const imageCount = 6
 useGsap(() => {
+    // 手机/平板：取消横向 pin 与拖拽龙，改为触屏横向画廊
+    if (isCompactViewport()) return
+
     const track = scrollContainerRef.value!
     const section = sectionRef.value!
 
@@ -94,14 +98,15 @@ watch(model, (v) => {
                 <NuxtImg draggable="false" :src="`image/home/wulong/${i - 1}.png`" />
             </div>
         </div>
-        <WuLong height="20dvh" v-model="model" v-model:dragged="dragged" style="position: absolute; bottom: 5%;" />
+        <WuLong class="wulong-figure" height="20dvh" v-model="model" v-model:dragged="dragged"
+            style="position: absolute; bottom: 5%;" />
     </section>
 </template>
 
 <style scoped>
 section {
     height: 100dvh;
-    width: 100dvw;
+    width: 100%;
     position: relative;
     background-image: url("/image/home/wulong/wulong-background.webp");
     background-size: cover;
@@ -159,5 +164,73 @@ section::before {
     width: 20vw;
     height: 20vw;
     background-color: red;
+}
+
+.mobile-gallery-hint {
+    display: none;
+}
+
+/* ---------- 移动端：横向剪纸画廊，取消 pin / 拖拽龙 ---------- */
+@media (max-width: 1023px) {
+    section {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 4rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    section::before {
+        display: none;
+    }
+
+    .wulong-figure {
+        display: none;
+    }
+
+    .scroll-container {
+        width: 100%;
+        height: auto;
+        justify-content: flex-start;
+        gap: 1rem;
+        padding: 0 max(1rem, env(safe-area-inset-right, 0px)) 0 max(1rem, env(safe-area-inset-left, 0px));
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .image-container {
+        flex: 0 0 min(78vw, 26rem);
+        width: min(78vw, 26rem);
+        margin: 0;
+        border-radius: 1rem;
+        scroll-snap-align: center;
+    }
+
+    .image-container img {
+        width: 82%;
+        height: 82%;
+        object-fit: contain;
+    }
+
+    .mobile-gallery-hint {
+        display: block;
+        margin: 1.25rem var(--space4) 0;
+        font-family: var(--font-ui);
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        color: var(--color-text-secondary);
+        text-align: center;
+    }
 }
 </style>

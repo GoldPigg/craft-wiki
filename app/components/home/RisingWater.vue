@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { isCompactViewport } from '~/utils/viewport'
 
 const { $gsap } = useNuxtApp()
 const { height } = useWindowSize()
@@ -79,6 +80,9 @@ const createBubble = () => {
 }
 
 useGsap(() => {
+    // 手机/平板使用静态水面：不位移、不生成气泡、不漂移光斑
+    if (isCompactViewport()) return
+
     $gsap.fromTo(
         ['.side-water-inner'],
         { y: '80vh' },
@@ -175,7 +179,7 @@ useGsap(() => {
                     style="z-index: -1; position: relative; opacity: 0.65;" />
                 <path class="water" fill="url(#water-body)" :d="wavePath" style="z-index: 0; position: relative;" />
 
-                <g style="mix-blend-mode: screen; opacity: 0.75; position: relative;z-index: -2;">
+                <g class="caustics" style="mix-blend-mode: screen; opacity: 0.75; position: relative;z-index: -2;">
                     <ellipse v-for="i in 3" class="caustic" ref="causticRefs" :cx="300 * i"
                         :cy="Math.random() * 100 + 800" :rx="Math.random() * 50 + 150" :ry="Math.random() * 10 + 30"
                         fill="url(#caustic-glow)" />
@@ -255,5 +259,15 @@ useGsap(() => {
 
     backdrop-filter: blur(0.8px);
     -webkit-backdrop-filter: blur(0.8px);
+}
+
+@media (max-width: 1023px) {
+    .water-svg {
+        width: 100%;
+    }
+
+    .caustics {
+        display: none;
+    }
 }
 </style>
