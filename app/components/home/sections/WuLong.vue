@@ -91,7 +91,7 @@ watch(model, (v) => {
     <section ref='section'>
         <div class="scroll-container" ref="scroll-container">
             <div v-for="i in imageCount" ref="images" class="image-container">
-                <img draggable="false" :src="`image/home/wulong/${i - 1}.png`" />
+                <NuxtImg draggable="false" :src="`image/home/wulong/${i - 1}.png`" />
             </div>
         </div>
         <WuLong height="20dvh" v-model="model" v-model:dragged="dragged" style="position: absolute; bottom: 5%;" />
@@ -130,6 +130,7 @@ section::before {
 }
 
 .image-container {
+    height: 60%;
     width: 100%;
     aspect-ratio: 1;
     display: flex;

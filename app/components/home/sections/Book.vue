@@ -70,7 +70,7 @@ useGsap(() => {
             <div class="scroll-hanging-content">
                 <div v-for="i in 9" ref="images" class="image-container"
                     :style="{ justifyContent: i % 2 === 0 ? 'end' : 'start' }">
-                    <img draggable="false" :src="`image/home/book/${i - 1}.jpg`" />
+                    <NuxtImg draggable="false" :src="`image/home/book/${i - 1}.jpg`" />
                 </div>
             </div>
             <div class="mount-bottom"></div>

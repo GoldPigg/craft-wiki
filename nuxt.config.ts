@@ -4,7 +4,7 @@ import tree from './content/wiki.config.ts'
 
 export default defineNuxtConfig({
   ssr: true,
-  modules: ['@nuxt/icon/module', '@hypernym/nuxt-gsap', '@fontize/nuxt'],
+  modules: ['@nuxt/icon/module', '@hypernym/nuxt-gsap', '@fontize/nuxt', '@nuxt/image'],
   icon: {
     clientBundle: {
       scan: true,

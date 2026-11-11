@@ -3,7 +3,8 @@ import RisingWater from '../RisingWater.vue';
 
 const { $ScrollTrigger, $gsap } = useNuxtApp()
 const { height } = useWindowSize()
-const luoshenRef = useTemplateRef<HTMLImageElement>('luoshen')
+const luoshenRef = useTemplateRef<HTMLDivElement>('luoshen')
+
 useGsap(() => {
     const luoshen = luoshenRef.value
     if (!luoshen) return
@@ -43,6 +44,14 @@ const imagePath = (i: number) => `/image/home/dance/${i}.jpg`
 const imageRef = useTemplateRef<HTMLDivElement>('image')
 const imageCount = 6
 
+const img = useImage()
+useHead({
+    link: Array(imageCount).map((_, i) => ({
+        rel: 'preload',
+        as: 'image',
+        href: img(imagePath(i)),
+    }))
+})
 
 const nextImage = () => {
     if (imageIndex.value === imageCount - 1) {
@@ -104,7 +113,9 @@ const preImage = () => {
                 <path fill="transparent" id="luoshenPath"
                     d="M256 40.8 C248.4 62.3 234.4 73.2 208.4 76.5 C185.6 79.4 158.3 68.1 158.3 39 C158.3 30.7 166.4 17.4 177.4 16.3 C204.8 13.5 213.4 45.2 196.4 62 C194.5 63.8 182.7 71.6 180.3 72.7 C122.1 98.8 45.6 117.2 0 123.2" />
             </svg>
-            <img ref="luoshen" src="/image/home/dance/luoshen.gif" style="height: 30%;rotate: 60;" />
+            <div ref="luoshen" style="rotate: 60; width: max-content;">
+                <NuxtImg src="/image/home/dance/luoshen.gif" />
+            </div>
         </RisingWater>
         <link v-for="i in imageCount" rel="preload" as="image" :href="imagePath(i - 1)" fetchpriority="high">
         <div style="display: flex; align-items: center; justify-content: center;gap: 10px; position: relative; z-index: 0;"
@@ -113,7 +124,7 @@ const preImage = () => {
                 <Icon name="lucide:chevron-left" />
             </div>
             <div class="image-container" ref="image">
-                <img :src="imagePath(imageIndex)" />
+                <NuxtImg :src="imagePath(imageIndex)" />
             </div>
             <div @click="nextImage" class="chevron-button">
                 <Icon name="lucide:chevron-right" />
